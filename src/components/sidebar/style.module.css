@@ -1,10 +1,10 @@
 .container {
 	height: 100vh;
-	width: 220px; /* 50px to 220px */
 	position: fixed;
+	width: 220px;
 	top: 0;
 	left: 0;
-	transition: all 1s ease-in-out;
+	transition: all 1.5s ease-in-out;
 }
 
 .sidebar {
@@ -70,6 +70,10 @@
 	justify-content: start;
 	align-items: center;
 	gap: 20px;
+}
+
+.route > p {
+	transition: all 1.5s ease-in-out;
 }
 
 .route > img {

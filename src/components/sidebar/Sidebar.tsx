@@ -8,12 +8,15 @@ function Sidebar() {
 	const [state, setState] = useState<boolean>(false);
 
 	return (
-		<div className={style.container}>
+		<div
+			className={style.container}
+			style={{ width: `${state ? "220px" : "50px"}` }}
+			onClick={() => setState(!state)}>
 			<nav className={style.sidebar}>
 				<div className={style.routes}>
 					<div className={style.route}>
 						<img src={home} alt="home" />
-						<p>Home</p>
+						<p style={{ opacity: `${state ? "1" : "0"}` }}>Home</p>
 					</div>
 				</div>
 				<div className={style.user}>
