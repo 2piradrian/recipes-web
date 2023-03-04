@@ -1,0 +1,80 @@
+.container {
+	height: 100vh;
+	width: 220px; /* 50px to 220px */
+	position: fixed;
+	top: 0;
+	left: 0;
+	transition: all 1s ease-in-out;
+}
+
+.sidebar {
+	height: 100%;
+	width: 100%;
+	padding: 0px 10px;
+	background: #eed6d6;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/* User Route */
+.user {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.user > img {
+	height: 30px;
+	margin: 10px;
+	border-radius: 50%;
+}
+
+.user > span {
+	flex: 1;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+/* ------------- */
+
+.arrowicon {
+	height: 30px;
+	top: 35px;
+	right: -15px;
+	position: absolute;
+	color: white;
+	background-color: blueviolet;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.routes {
+	margin: 20px 0px;
+	gap: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: start;
+}
+
+.route {
+	width: 100%;
+	height: 30px;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	gap: 20px;
+}
+
+.route > img {
+	height: 100%;
+}
+.route > p {
+	font-size: 18px;
+}
