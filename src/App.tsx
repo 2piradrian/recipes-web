@@ -1,6 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Home from "./routes/Home";
+import Explore from "./routes/Explore";
+import Favourites from "./routes/Favourites";
+import MyRecipes from "./routes/MyRecipes";
+import Layout from "./layout/Layout";
 
 const queryClient = new QueryClient();
 
@@ -8,11 +12,17 @@ function App() {
 	return (
 		<div>
 			<QueryClientProvider client={queryClient}>
-				<Routes>
-					<Route path="/home" element={<Home />} />
-					<Route path="/" element={<Navigate to="/home" />} />
-					<Route path="*" element={<Navigate to="/home" />} />
-				</Routes>
+				<Layout>
+					<Routes>
+						<Route path="/home" element={<Home />} />
+						<Route path="/explorar" element={<Explore />} />
+						<Route path="/favoritos" element={<Favourites />} />
+						<Route path="/recetario" element={<MyRecipes />} />
+						<Route path="/usuario" element={<MyRecipes />} />
+						<Route path="/" element={<Navigate to="/home" />} />
+						<Route path="*" element={<Navigate to="/home" />} />
+					</Routes>
+				</Layout>
 			</QueryClientProvider>
 		</div>
 	);

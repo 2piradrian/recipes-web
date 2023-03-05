@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import style from "./style.module.css";
 
 type Props = {
@@ -7,13 +8,21 @@ type Props = {
 };
 
 function NavItem({ state, icon, name }: Props) {
+	const activeStyle = {
+		background: "white",
+		marginLeft: "15px",
+	};
+
 	return (
-		<div className={style.route}>
+		<NavLink
+			className={style.route}
+			to={`/${name.toLowerCase()}`}
+			style={({ isActive }) => (isActive && name !== "Usuario" ? activeStyle : undefined)}>
 			<div className={style.icon}>{icon}</div>
 			<p style={state ? { opacity: "1", width: "auto" } : { opacity: "0", width: "0px" }}>
 				{name}
 			</p>
-		</div>
+		</NavLink>
 	);
 }
 
