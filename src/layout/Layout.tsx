@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "../components/header/Header";
 import Sidebar from "../components/sidebar/Sidebar";
 
 type Props = {
@@ -8,8 +9,9 @@ type Props = {
 function Layout({ children }: Props) {
 	return (
 		<>
+			<Header />
 			<Sidebar />
-			<main>{children}</main>
+			<main style={{ marginLeft: "50px" }}>{children}</main>
 		</>
 	);
 }
