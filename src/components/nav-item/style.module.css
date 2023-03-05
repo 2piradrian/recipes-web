@@ -1,0 +1,30 @@
+.route {
+	width: 100%;
+	height: 35px;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	gap: 20px;
+	cursor: pointer;
+}
+
+.route > p {
+	transition: all 400ms ease-in-out;
+}
+
+.icon > svg {
+	height: 100%;
+	font-size: 20px;
+}
+.route > p {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.icon {
+	height: 35px;
+	min-width: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
