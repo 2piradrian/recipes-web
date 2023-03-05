@@ -6,9 +6,6 @@
 	left: 0;
 	transition: all 600ms ease-in-out;
 	background: #eed6d6;
-	-webkit-box-shadow: -16px -8px 47px 0px rgba(0, 0, 0, 0.75);
-	-moz-box-shadow: -16px -8px 47px 0px rgba(0, 0, 0, 0.75);
-	box-shadow: -16px -8px 47px 0px rgba(0, 0, 0, 0.75);
 	z-index: 99;
 }
 
