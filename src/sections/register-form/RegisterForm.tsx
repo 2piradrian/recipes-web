@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Titles from "../../components/titles/Titles";
+import useAccount from "../../hooks/account";
 import style from "./style.module.css";
 
 function RegisterForm() {
+	const { createAccountWithEmail } = useAccount();
 	const [emailE, setEmailE] = useState("");
 	const [passwordE, setPasswordE] = useState("");
 	const [repeatPassE, setRepeatE] = useState("");
@@ -30,6 +32,8 @@ function RegisterForm() {
 			return;
 		}
 		setRepeatE("");
+
+		createAccountWithEmail(email, password);
 	};
 
 	return (
