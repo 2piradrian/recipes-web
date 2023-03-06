@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
 import Titles from "../../components/titles/Titles";
-import useAccount from "../../hooks/account";
+import useAccount from "../../hooks/useAccount";
 import style from "./style.module.css";
+import useVerification from "../../hooks/useVerification";
 
 function RegisterForm() {
+	const { verifyRegister } = useVerification();
 	const { createAccountWithEmail } = useAccount();
+	/* mensajes de error */
 	const [emailE, setEmailE] = useState("");
 	const [passwordE, setPasswordE] = useState("");
 	const [repeatPassE, setRepeatE] = useState("");
@@ -15,25 +20,10 @@ function RegisterForm() {
 
 		const email = e.currentTarget.email.value;
 		const password = e.currentTarget.password.value;
-		const repeatpass = e.currentTarget.repeatpass.value;
 
-		if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-			setEmailE("Email no es válido");
-			return;
+		if (verifyRegister(e, setEmailE, setPasswordE, setRepeatE)) {
+			createAccountWithEmail(email, password);
 		}
-		setEmailE("");
-		if (password.length < 6) {
-			setPasswordE("Contraseña debe tener al menos 6 caracteres");
-			return;
-		}
-		setPasswordE("");
-		if (password !== repeatpass) {
-			setRepeatE("Las contraseñas no coinciden");
-			return;
-		}
-		setRepeatE("");
-
-		createAccountWithEmail(email, password);
 	};
 
 	return (
@@ -58,6 +48,7 @@ function RegisterForm() {
 				<button>Registrar</button>
 			</form>
 			<Link to="/login">Ya tengo una cuenta 👨‍🍳</Link>
+			<Toaster />
 		</section>
 	);
 }

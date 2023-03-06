@@ -11,7 +11,7 @@ function Layout({ children }: Props) {
 		<>
 			<Header />
 			<Sidebar />
-			<main style={{ marginLeft: "50px" }}>{children}</main>
+			<main style={{ marginLeft: "0px" }}>{children}</main>
 		</>
 	);
 }

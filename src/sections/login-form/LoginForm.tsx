@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Titles from "../../components/titles/Titles";
+import useAccount from "../../hooks/useAccount";
+import useVerification from "../../hooks/useVerification";
 import style from "./style.module.css";
 
 function LoginForm() {
+	const { logInWithEmail } = useAccount();
+	const { verifyLogin } = useVerification();
+	/* mensaje de error */
 	const [emailE, setEmailE] = useState("");
 	const [passwordE, setPasswordE] = useState("");
 
@@ -13,14 +18,8 @@ function LoginForm() {
 		const email = e.currentTarget.email.value;
 		const password = e.currentTarget.password.value;
 
-		if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-			setEmailE("Email no es válido");
-			return;
-		}
-		setEmailE("");
-		if (password.length < 6) {
-			setPasswordE("Contraseña debe tener al menos 6 caracteres");
-			return;
+		if (verifyLogin(e, setEmailE, setPasswordE)) {
+			logInWithEmail(email, password);
 		}
 	};
 
