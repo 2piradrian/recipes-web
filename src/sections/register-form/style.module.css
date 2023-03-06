@@ -8,8 +8,12 @@
 	align-items: center;
 }
 
-a {
+section > a {
 	text-decoration: underline;
+}
+
+small {
+	color: red;
 }
 
 .form > button {
