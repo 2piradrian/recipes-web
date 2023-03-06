@@ -5,6 +5,8 @@ import Explore from "./routes/Explore";
 import Favourites from "./routes/Favourites";
 import MyRecipes from "./routes/MyRecipes";
 import Layout from "./layout/Layout";
+import Register from "./routes/Register";
+import Login from "./routes/Login";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +21,8 @@ function App() {
 						<Route path="/favoritos" element={<Favourites />} />
 						<Route path="/recetario" element={<MyRecipes />} />
 						<Route path="/usuario" element={<MyRecipes />} />
+						<Route path="/register" element={<Register />} />
+						<Route path="/login" element={<Login />} />
 						<Route path="/" element={<Navigate to="/home" />} />
 						<Route path="*" element={<Navigate to="/home" />} />
 					</Routes>
