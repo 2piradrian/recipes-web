@@ -1,12 +1,12 @@
-import Home from "./Home";
-import Explore from "./Explore";
-import Favourites from "./Favourites";
-import MyRecipes from "./MyRecipes";
-import Register from "./Register";
-import Login from "./Login";
 import { Navigate, Route, Routes } from "react-router-dom";
-import User from "./User";
-import PrivateRoute from "./PrivateRoute";
+import Explore from "../pages/Explore";
+import Favourites from "../pages/Favourites";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import MyRecipes from "../pages/MyRecipes";
+import PrivateRoute from "../pages/PrivateRoute";
+import Register from "../pages/Register";
+import User from "../pages/User";
 
 function AllRoutes() {
 	return (
