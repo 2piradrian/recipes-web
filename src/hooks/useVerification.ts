@@ -1,3 +1,4 @@
+import { fullUserData, partialUserData } from "./../types/types";
 function useVerification() {
 	/* validación de login y register */
 	const validateInputs = (
@@ -30,7 +31,25 @@ function useVerification() {
 	};
 
 	/* verificación de data completa o parcial */
-	const verifyUserData = () => {};
+	const verifyUserData = (userData: fullUserData | partialUserData): boolean => {
+		const requiredKeys: (keyof fullUserData)[] = [
+			"uid",
+			"email",
+			"name",
+			"surname",
+			"image",
+			"categories",
+			"favourites",
+		];
+
+		for (const key of requiredKeys) {
+			if (!(key in userData)) {
+				return false;
+			}
+		}
+
+		return true;
+	};
 
 	return { validateInputs };
 }
