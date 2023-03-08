@@ -22,9 +22,14 @@ function useAccount() {
 				dispatch(get_user_data(email));
 				toast("Usuario creado con éxito 👌");
 			})
-			.catch(() => {
-				toast("Es probable que esa cuenta ya exista 😡");
-				toast("Algo salió mal 😢");
+			.catch((error) => {
+				if (error.code === "auth/email-already-in-use") {
+					toast(
+						"El correo electrónico ya está en uso. Por favor, intente con otro correo electrónico."
+					);
+				} else {
+					toast("Algo salió mal 😢");
+				}
 			});
 	};
 
@@ -35,8 +40,12 @@ function useAccount() {
 				dispatch(get_user_data(email));
 				navigate("/usuario");
 			})
-			.catch(() => {
-				toast("Algo salió mal 😢");
+			.catch((error) => {
+				if (error.code === "auth/wrong-password") {
+					toast("Contraseña incorrecta. Por favor, intenta de nuevo.");
+				} else {
+					toast("Algo salió mal 😢");
+				}
 			});
 	};
 

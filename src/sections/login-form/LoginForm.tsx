@@ -7,7 +7,7 @@ import style from "./style.module.css";
 
 function LoginForm() {
 	const { logInWithEmail } = useAccount();
-	const { verifyLogin } = useVerification();
+	const { validateInputs } = useVerification();
 	/* mensaje de error */
 	const [emailE, setEmailE] = useState("");
 	const [passwordE, setPasswordE] = useState("");
@@ -18,7 +18,7 @@ function LoginForm() {
 		const email = e.currentTarget.email.value;
 		const password = e.currentTarget.password.value;
 
-		if (verifyLogin(e, setEmailE, setPasswordE)) {
+		if (validateInputs(e, setEmailE, setPasswordE)) {
 			logInWithEmail(email, password);
 		}
 	};

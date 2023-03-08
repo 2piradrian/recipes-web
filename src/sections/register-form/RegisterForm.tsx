@@ -8,7 +8,7 @@ import style from "./style.module.css";
 import useVerification from "../../hooks/useVerification";
 
 function RegisterForm() {
-	const { verifyRegister } = useVerification();
+	const { validateInputs } = useVerification();
 	const { createAccountWithEmail } = useAccount();
 	/* mensajes de error */
 	const [emailE, setEmailE] = useState("");
@@ -21,7 +21,7 @@ function RegisterForm() {
 		const email = e.currentTarget.email.value;
 		const password = e.currentTarget.password.value;
 
-		if (verifyRegister(e, setEmailE, setPasswordE, setRepeatE)) {
+		if (validateInputs(e, setEmailE, setPasswordE, setRepeatE)) {
 			createAccountWithEmail(email, password);
 		}
 	};
