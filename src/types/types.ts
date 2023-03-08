@@ -20,3 +20,23 @@ export type recipe = {
 	image: string;
 	author: string;
 };
+
+export type fullUserData = {
+	uid: string;
+	email: string;
+	name: string;
+	surname: string;
+	image: string;
+	categories: Array<string>;
+	favourites: Array<string>;
+};
+
+export type partialUserData = {
+	uid: string;
+	email: string;
+};
+
+export type action = {
+	type: string;
+	payload: any;
+};

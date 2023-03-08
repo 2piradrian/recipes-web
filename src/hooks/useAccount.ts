@@ -1,13 +1,14 @@
+import { get_user_data, set_user_data } from "./../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { collection, doc, setDoc } from "firebase/firestore";
+import { collection } from "firebase/firestore";
 import { toast } from "react-hot-toast";
 import { auth, db } from "../firebase";
+import { useDispatch } from "react-redux";
 
 function useAccount() {
 	const navigate = useNavigate();
-	/* colección de usuarios */
-	const usersCollection = collection(db, "users");
+	const dispatch = useDispatch();
 	/* colección de recetas */
 	const recipesCollection = collection(db, "recipes");
 
@@ -15,36 +16,31 @@ function useAccount() {
 	const createAccountWithEmail = (email: string, password: string) => {
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
-				const userInfo = { email: userCredential.user.email, uid: userCredential.user.uid };
+				const userInfo = { email: email, uid: userCredential.user.uid };
 				logInWithEmail(email, password);
-				setUserInfo(userInfo);
+				dispatch(set_user_data(userInfo));
+				dispatch(get_user_data(email));
 				toast("Usuario creado con éxito 👌");
 			})
-			.catch((error) => {
-				console.log(error);
+			.catch(() => {
 				toast("Es probable que esa cuenta ya exista 😡");
 				toast("Algo salió mal 😢");
 			});
 	};
 
-	/* crea el documento con información del usuario  */
-	// TODO: cambiar tipo any por información parcial y completa
-	const setUserInfo = (userInfo: any) => {
-		setDoc(doc(usersCollection, userInfo.email), userInfo);
-	};
-
 	/* ingresa a la cuenta sin tener que exponer el auth */
 	const logInWithEmail = (email: string, password: string) => {
 		signInWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
+			.then(() => {
+				dispatch(get_user_data(email));
 				navigate("/usuario");
 			})
-			.catch((error) => {
-				console.log(error);
+			.catch(() => {
+				toast("Algo salió mal 😢");
 			});
 	};
 
-	return { createAccountWithEmail, setUserInfo, logInWithEmail };
+	return { createAccountWithEmail, logInWithEmail };
 }
 
 export default useAccount;
