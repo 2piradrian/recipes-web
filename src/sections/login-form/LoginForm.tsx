@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Titles from "../../components/titles/Titles";
 import useAccount from "../../hooks/useAccount";
 import useVerification from "../../hooks/useVerification";
-import style from "./style.module.css";
+import "../../styles/forms.css";
 
 function LoginForm() {
 	const { logInWithEmail } = useAccount();
@@ -26,13 +26,13 @@ function LoginForm() {
 	return (
 		<section className={"bigcontainer"}>
 			<Titles title="Hola de nuevo" subtitle="ingresá acá 👇" />
-			<form className={style.form} onSubmit={(e) => handleSubmit(e)}>
-				<div className={style.columnInputs}>
+			<form className="form" onSubmit={(e) => handleSubmit(e)}>
+				<div className="columnInputs">
 					<label>Correo electrónico</label>
 					<input type="email" placeholder="example@email.com" name="email" />
 					<small>{emailE}</small>
 				</div>
-				<div className={style.columnInputs}>
+				<div className="columnInputs">
 					<label>Contraseña</label>
 					<input type="password" placeholder="* * * * * * * * * *" name="password" />
 					<small>{passwordE}</small>

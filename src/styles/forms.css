@@ -1,0 +1,63 @@
+.form {
+	height: 100%;
+	width: 320px;
+	margin: 20px 0px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.form > button {
+	height: 40px;
+	width: 300px;
+	margin: 15px 0px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	background: var(--main);
+}
+
+.arrowInputs {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+.arrowInputs > .columnInputs {
+	width: 150px;
+}
+
+.columnInputs {
+	width: 300px;
+	margin: 10px 0px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.columnInputs > label {
+	width: 100%;
+	padding-left: 5px;
+}
+
+.columnInputs > input {
+	width: 100%;
+	height: 45px;
+
+	border-radius: 8px;
+	border: none;
+	outline: none;
+	padding-left: 15px;
+	border: 2px solid var(--main);
+}
+
+small {
+	color: red;
+}
+
+section > a {
+	text-decoration: underline;
+}
