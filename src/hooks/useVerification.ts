@@ -51,7 +51,7 @@ function useVerification() {
 		return true;
 	};
 
-	return { validateInputs };
+	return { validateInputs, verifyUserData };
 }
 
 export default useVerification;

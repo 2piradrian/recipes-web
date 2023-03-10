@@ -1,18 +1,15 @@
-import { getAuth } from "firebase/auth";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 import LoginForm from "../sections/login-form/LoginForm";
 
 function Login() {
-	const navigate = useNavigate();
-	useEffect(() => {
-		getAuth().onAuthStateChanged(function (user) {
-			if (user) {
-				navigate("/usuario");
-			}
-		});
-	}, []);
+	const { auth } = useContext(AuthContext);
+
+	if (auth) {
+		return <Navigate to="/user" replace />;
+	}
 
 	return <LoginForm />;
 }

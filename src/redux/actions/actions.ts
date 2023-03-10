@@ -6,7 +6,7 @@ export const get_user_data = (email: string) => ({
 	payload: email,
 });
 
-export const set_user_data = (data: fullUserData | partialUserData) => ({
+export const set_user_data = (data: fullUserData | partialUserData | null) => ({
 	type: SET_USER_DATA,
 	payload: data,
 });

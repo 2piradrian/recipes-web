@@ -13,7 +13,6 @@ export const userdataReducer = (
 			return state;
 		case GET_USER_DATA:
 			state = getUserData(payload);
-			console.log(state);
 			return state;
 		default:
 			return state;

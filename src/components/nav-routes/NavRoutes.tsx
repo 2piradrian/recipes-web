@@ -4,7 +4,8 @@ import style from "./style.module.css";
 import { AiFillHome } from "react-icons/ai";
 import { MdFavorite } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
-import { BsFillSearchHeartFill } from "react-icons/bs";
+import { FaSearch } from "react-icons/fa";
+import nouser from "../../assets/nouser.jpg";
 
 type Props = {
 	state: boolean;
@@ -12,12 +13,22 @@ type Props = {
 
 function NavRoutes({ state }: Props) {
 	return (
-		<div className={style.routes}>
-			<NavItem icon={<AiFillHome />} name="Home" state={state} />
-			<NavItem icon={<BsFillSearchHeartFill />} name="Explorar" state={state} />
-			<NavItem icon={<MdFavorite />} name="Favoritos" state={state} />
-			<NavItem icon={<FaBook />} name="Recetario" state={state} />
-		</div>
+		<>
+			<div className={style.routes}>
+				<NavItem icon={<AiFillHome />} name="Home" route="/home" state={state} />
+				<NavItem icon={<FaSearch />} name="Explorar" route="/explore" state={state} />
+				<NavItem icon={<MdFavorite />} name="Favoritos" route="/favourites" state={state} />
+				<NavItem icon={<FaBook />} name="Recetario" route="/myrecipes" state={state} />
+			</div>
+			<div className={style.user}>
+				<NavItem
+					icon={<img src={nouser} alt="profile photo" className={style.userimg} />}
+					name="Perfil"
+					route="/user"
+					state={state}
+				/>
+			</div>
+		</>
 	);
 }
 
