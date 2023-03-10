@@ -21,4 +21,5 @@
 	border: 3px solid transparent;
 	border-radius: 50%;
 	transition: all 100ms ease-out;
+	cursor: pointer;
 }
