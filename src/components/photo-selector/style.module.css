@@ -7,6 +7,10 @@
 	align-items: center;
 }
 
+.container > label {
+	margin-bottom: 15px;
+}
+
 .photoContainer {
 	width: 100%;
 	display: flex;
