@@ -41,7 +41,6 @@ function useVerification() {
 			"categories",
 			"favourites",
 		];
-
 		for (const key of requiredKeys) {
 			if (!(key in userData)) {
 				return false;
@@ -51,7 +50,40 @@ function useVerification() {
 		return true;
 	};
 
-	return { validateInputs, verifyUserData };
+	/* verificación de formularios de data final */
+	const verifyNewData = (
+		e: React.FormEvent<HTMLFormElement>,
+		nameE: (value: React.SetStateAction<string>) => void,
+		surnameE: (value: React.SetStateAction<string>) => void
+	) => {
+		const name = e.currentTarget.username.value;
+		const surname = e.currentTarget.usersurname.value;
+
+		if (name.length < 3) {
+			nameE("Al menos 3 caracteres.");
+			return false;
+		}
+		nameE("");
+		if (name.length > 10) {
+			nameE("El nombre es demasiado largo");
+			return false;
+		}
+		nameE("");
+		if (surname.length < 3) {
+			surnameE("Al menos 3 caracteres.");
+			return false;
+		}
+		surnameE("");
+		if (surname.length > 10) {
+			surnameE("El apellido es demasiado largo");
+			return false;
+		}
+		surnameE("");
+
+		return true;
+	};
+
+	return { validateInputs, verifyUserData, verifyNewData };
 }
 
 export default useVerification;
