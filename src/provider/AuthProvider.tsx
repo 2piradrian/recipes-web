@@ -28,6 +28,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 	const getUserDataAsync = async (email: string) => {
 		try {
 			const userData = await getUserData(email);
+			console.log(userData);
 			dispatch(set_local_data(userData as fullUserData));
 		} catch (error) {
 			console.error("Error fetching user data:", error);

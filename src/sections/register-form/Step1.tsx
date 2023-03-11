@@ -1,10 +1,8 @@
 import { Formik, Form, Field } from "formik";
 import { Link } from "react-router-dom";
-import Titles from "../../components/titles/Titles";
-import useAccount from "../../hooks/useAccount";
-import "../../styles/forms.css";
 import { Toaster } from "react-hot-toast";
 import useVerification from "../../hooks/useVerification";
+import "../../styles/forms.css";
 
 type Props = {
 	handleStep: (number: number) => void;
