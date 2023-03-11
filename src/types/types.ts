@@ -21,6 +21,15 @@ export type recipe = {
 	author: string;
 };
 
+export type partialUserData = {
+	email: string;
+	name: string;
+	surname: string;
+	image: number;
+	categories: Array<string>;
+	favourites: Array<string>;
+	recipes: Array<recipe>;
+};
 export type fullUserData = {
 	uid: string;
 	email: string;
@@ -30,11 +39,6 @@ export type fullUserData = {
 	categories: Array<string>;
 	favourites: Array<string>;
 	recipes: Array<recipe>;
-};
-
-export type partialUserData = {
-	uid: string;
-	email: string;
 };
 
 export type action = {

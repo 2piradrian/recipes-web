@@ -1,11 +1,25 @@
 .form {
-	height: 100%;
+	height: auto;
 	width: 320px;
 	margin: 20px 0px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+input {
+	width: 100%;
+	min-height: 45px;
+	border-radius: 8px;
+	border: none;
+	outline: none;
+	padding-left: 15px;
+	border: 2px solid var(--main);
+}
+
+label {
+	padding-left: 5px;
 }
 
 button {
@@ -18,19 +32,21 @@ button {
 	background: var(--main);
 }
 
+small {
+	color: red;
+	padding-left: 5px;
+}
+
 .arrowInputs {
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 5px;
 }
 
-.arrowInputs > .columnInputs {
-	width: 150px;
-}
-
 .columnInputs {
-	width: 300px;
+	width: 100%;
 	margin: 10px 0px;
 	display: flex;
 	flex-direction: column;
@@ -38,7 +54,14 @@ button {
 	align-items: flex-start;
 }
 
-.columnInputs > label {
+.link {
+	width: 100%;
+	display: block;
+	text-align: center;
+	text-decoration: underline;
+}
+
+/* .columnInputs > label {
 	width: 100%;
 	margin: 3px 0px;
 	padding-left: 5px;
@@ -98,3 +121,4 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
 	-moz-appearance: textfield;
 }
+ */

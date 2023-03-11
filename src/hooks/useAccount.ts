@@ -1,3 +1,4 @@
+import { partialUserData } from "./../types/types";
 import { get_user_data, set_user_data } from "./../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
@@ -13,13 +14,12 @@ function useAccount() {
 	const recipesCollection = collection(db, "recipes");
 
 	/* crea una cuenta sin tener que exponer el auth */
-	const createAccountWithEmail = (email: string, password: string) => {
+	const createAccountWithEmail = (email: string, password: string, userData: partialUserData) => {
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
-				const userInfo = { email: email, uid: userCredential.user.uid };
+				const fullData = { ...userData, uid: userCredential.user.uid };
+				dispatch(set_user_data(fullData));
 				logInWithEmail(email, password);
-				dispatch(set_user_data(userInfo));
-				dispatch(get_user_data(email));
 				toast("Usuario creado con éxito 👌");
 			})
 			.catch((error) => {

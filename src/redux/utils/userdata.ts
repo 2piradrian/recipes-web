@@ -1,4 +1,4 @@
-import { fullUserData, partialUserData } from "./../../types/types";
+import { fullUserData } from "./../../types/types";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 
@@ -6,6 +6,6 @@ import { db } from "../../firebase";
 const usersCollection = collection(db, "users");
 
 /* escribe un documento con información del usuario  */
-export const setUserData = (userInfo: fullUserData | partialUserData) => {
+export const setUserData = (userInfo: fullUserData) => {
 	setDoc(doc(usersCollection, userInfo.email), userInfo);
 };

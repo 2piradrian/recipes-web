@@ -3,23 +3,28 @@ import { Link } from "react-router-dom";
 import Titles from "../../components/titles/Titles";
 import useAccount from "../../hooks/useAccount";
 import "../../styles/forms.css";
+import { Toaster } from "react-hot-toast";
 import useVerification from "../../hooks/useVerification";
 
-function LoginForm() {
-	const { logInWithEmail } = useAccount();
-	const { SignInSchema } = useVerification();
+type Props = {
+	handleStep: (number: number) => void;
+	dataStep: (data: any) => void;
+};
+
+function Step1({ handleStep, dataStep }: Props) {
+	const { RegisterSchema } = useVerification();
 
 	const handleSubmit = (values: any) => {
-		logInWithEmail(values.email, values.password);
+		handleStep(1);
+		dataStep(values);
 	};
 
 	return (
-		<section className="bigcontainer">
-			<Titles title="Hola de nuevo" subtitle="ingresá acá 👇" />
+		<>
 			<Formik
-				initialValues={{ email: "", password: "" }}
-				onSubmit={handleSubmit}
-				validationSchema={SignInSchema}>
+				initialValues={{ email: "", password: "", repeatpass: "" }}
+				validationSchema={RegisterSchema}
+				onSubmit={handleSubmit}>
 				{({ errors, touched }) => (
 					<Form className="form">
 						<div className="columnInputs">
@@ -46,15 +51,28 @@ function LoginForm() {
 								<small className="error">{errors.password}</small>
 							)}
 						</div>
-						<button type="submit">Ingresar</button>
+						<div className="columnInputs">
+							<label htmlFor="repeatpass">Repetir contraseña</label>
+							<Field
+								type="password"
+								id="repeatpass"
+								name="repeatpass"
+								placeholder="* * * * * * * * * *"
+							/>
+							{errors.repeatpass && touched.repeatpass && (
+								<small className="error">{errors.repeatpass}</small>
+							)}
+						</div>
+						<button type="submit">Siguiente</button>
 					</Form>
 				)}
 			</Formik>
-			<Link to="/register" className="link">
-				Aún no tengo una cuenta 😔
+			<Link to="/login" className="link">
+				Ya tengo una cuenta 👨‍🍳
 			</Link>
-		</section>
+			<Toaster />
+		</>
 	);
 }
 
-export default LoginForm;
+export default Step1;

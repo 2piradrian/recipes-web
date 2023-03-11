@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Titles from "../components/titles/Titles";
 
 import Step1 from "../sections/recipe-form/Step1";
@@ -10,6 +10,8 @@ function AddRecipe() {
 	const handleStep = (number: number) => {
 		setFormStep(formStep + number);
 	};
+
+	useEffect(() => {});
 
 	return (
 		<section className="bigcontainer">

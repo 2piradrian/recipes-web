@@ -3,9 +3,8 @@ import { doc, getDoc } from "firebase/firestore";
 import { createContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { db } from "../firebase";
-import { get_user_data, set_local_data, set_user_data } from "../redux/actions/actions";
-import { setUserData } from "../redux/utils/userdata";
-import { fullUserData, partialUserData } from "../types/types";
+import { set_local_data } from "../redux/actions/actions";
+import { fullUserData } from "../types/types";
 
 type AuthContextType = {
 	auth: User | null;
@@ -29,7 +28,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 	const getUserDataAsync = async (email: string) => {
 		try {
 			const userData = await getUserData(email);
-			dispatch(set_local_data(userData as fullUserData | partialUserData));
+			dispatch(set_local_data(userData as fullUserData));
 		} catch (error) {
 			console.error("Error fetching user data:", error);
 		}
