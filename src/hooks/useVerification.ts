@@ -40,14 +40,10 @@ function useVerification() {
 			"image",
 			"categories",
 			"favourites",
+			"recipes",
 		];
-		for (const key of requiredKeys) {
-			if (!(key in userData)) {
-				return false;
-			}
-		}
 
-		return true;
+		return requiredKeys.every((key) => userData.hasOwnProperty(key));
 	};
 
 	/* verificación de formularios de data final */

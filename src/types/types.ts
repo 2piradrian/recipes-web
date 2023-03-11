@@ -26,9 +26,10 @@ export type fullUserData = {
 	email: string;
 	name: string;
 	surname: string;
-	image: string;
+	image: number;
 	categories: Array<string>;
 	favourites: Array<string>;
+	recipes: Array<recipe>;
 };
 
 export type partialUserData = {

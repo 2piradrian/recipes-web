@@ -1,5 +1,5 @@
-import { getUserData, setUserData } from "./../utils/userdata";
-import { GET_USER_DATA, SET_USER_DATA } from "../types/types";
+import { setUserData } from "./../utils/userdata";
+import { SET_LOCAL_DATA, SET_USER_DATA } from "../types/types";
 import { action, fullUserData, partialUserData } from "./../../types/types";
 
 export const userdataReducer = (
@@ -11,9 +11,8 @@ export const userdataReducer = (
 		case SET_USER_DATA:
 			setUserData(payload);
 			return state;
-		case GET_USER_DATA:
-			state = getUserData(payload);
-			return state;
+		case SET_LOCAL_DATA:
+			return { ...payload };
 		default:
 			return state;
 	}

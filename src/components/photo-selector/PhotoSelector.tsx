@@ -27,13 +27,14 @@ function PhotoSelector({ setSelectedPhoto, selectedPhoto }: Props) {
 			<div className={style.photoContainer}>
 				{images.map((image, index) => (
 					<img
-						key={index}
+						key={index + 1}
 						src={image}
 						alt={`Imagen ${index + 1}`}
 						style={{
-							border: selectedPhoto === index ? "3px solid var(--contrast)" : "none",
+							border:
+								selectedPhoto === index + 1 ? "3px solid var(--contrast)" : "none",
 						}}
-						onClick={() => handleSelect(index)}
+						onClick={() => handleSelect(index + 1)}
 					/>
 				))}
 			</div>

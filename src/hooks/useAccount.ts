@@ -38,7 +38,7 @@ function useAccount() {
 		signInWithEmailAndPassword(auth, email, password)
 			.then(() => {
 				dispatch(get_user_data(email));
-				navigate("/usuario");
+				navigate("/user");
 			})
 			.catch((error) => {
 				if (error.code === "auth/wrong-password") {
