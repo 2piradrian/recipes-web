@@ -1,6 +1,6 @@
 .form {
 	height: auto;
-	width: 320px;
+	width: 350px;
 	margin: 20px 0px;
 	display: flex;
 	flex-direction: column;
@@ -10,7 +10,7 @@
 
 input {
 	width: 100%;
-	min-height: 45px;
+	height: 45px;
 	border-radius: 8px;
 	border: none;
 	outline: none;
@@ -23,8 +23,8 @@ label {
 }
 
 button {
-	height: 40px;
-	width: 300px;
+	height: 45px;
+	width: 100%;
 	margin: 15px 0px;
 	border: none;
 	border-radius: 10px;
@@ -35,6 +35,18 @@ button {
 small {
 	color: red;
 	padding-left: 5px;
+}
+
+select {
+	width: 100%;
+	height: 45px;
+	font-weight: 400;
+	font-size: 16px;
+	padding-left: 15px;
+	border: 2px solid var(--main);
+	background: var(--background);
+	border-radius: 10px;
+	cursor: pointer;
 }
 
 .arrowInputs {
@@ -61,57 +73,6 @@ small {
 	text-decoration: underline;
 }
 
-/* .columnInputs > label {
-	width: 100%;
-	margin: 3px 0px;
-	padding-left: 5px;
-}
-
-.columnInputs > input,
-.columnInputs > select {
-	width: 100%;
-	height: 45px;
-	border-radius: 8px;
-	border: none;
-	outline: none;
-	padding-left: 15px;
-	border: 2px solid var(--main);
-}
-
-.columnInputs > button {
-	width: 100%;
-	height: 45px;
-	border-radius: 8px;
-	border: none;
-	outline: none;
-	border: 2px solid var(--main);
-}
-
-small {
-	padding-left: 5px;
-	color: red;
-}
-
-section > a {
-	text-decoration: underline;
-}
-
-select {
-	height: 40px;
-	width: 300px;
-	font-weight: 400;
-	font-size: 16px;
-	padding-left: 15px;
-	border: 2px solid var(--main);
-	background: var(--background);
-	border-radius: 12px;
-	cursor: pointer;
-}
-
-select option {
-	cursor: pointer;
-}
-
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
 	-webkit-appearance: none;
@@ -119,6 +80,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 input[type="number"] {
+	appearance: textfield;
 	-moz-appearance: textfield;
 }
- */

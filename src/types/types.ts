@@ -1,7 +1,7 @@
 export type ingredient = {
-	quantity: number;
+	quantity: string;
 	unit: string;
-	element: string;
+	name: string;
 };
 
 export type comment = {

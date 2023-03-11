@@ -27,7 +27,17 @@ function useVerification() {
 		usersurname: Yup.string().required("Este campo es requerido"),
 	});
 
-	return { UserSchema, RegisterSchema, SignInSchema };
+	const IngredientsSchema = Yup.object({
+		ingredients: Yup.array().of(
+			Yup.object().shape({
+				amount: Yup.string().required("La cantidad es requerida"),
+				unit: Yup.string().notOneOf(["Unidad"], "Seleccione una unidad"),
+				name: Yup.string().required("El nombre es requerido"),
+			})
+		),
+	});
+
+	return { UserSchema, RegisterSchema, SignInSchema, IngredientsSchema };
 }
 
 export default useVerification;

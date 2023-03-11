@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Titles from "../components/titles/Titles";
 
 import Step1 from "../sections/recipe-form/Step1";
 import Step2 from "../sections/recipe-form/Step2";
@@ -15,14 +14,7 @@ function AddRecipe() {
 
 	return (
 		<section className="bigcontainer">
-			<Titles title="Colaborá con recetas" subtitle="creemos una nueva receta 👨‍🍳" />
-			<form className="form">
-				{formStep === 1 ? (
-					<Step1 handleStep={handleStep} />
-				) : (
-					<Step2 handleStep={handleStep} />
-				)}
-			</form>
+			{formStep === 1 ? <Step1 handleStep={handleStep} /> : <Step2 handleStep={handleStep} />}
 		</section>
 	);
 }
