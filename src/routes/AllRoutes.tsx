@@ -7,6 +7,7 @@ import MyRecipes from "../pages/MyRecipes";
 import PrivateRoute from "./PrivateRoute";
 import Register from "../pages/Register";
 import User from "../pages/User";
+import AddRecipe from "../pages/AddRecipe";
 
 function AllRoutes() {
 	return (
@@ -20,7 +21,8 @@ function AllRoutes() {
 			<Route element={<PrivateRoute />}>
 				<Route path="/user" element={<User />} />
 				<Route path="/favourites" element={<Favourites />} />
-				<Route path="/myrecipes" element={<MyRecipes />} />
+				<Route path="/myrecipes" element={<AddRecipe />} /> {/* <MyRecipes /> */}
+				<Route path="/addrecipe" element={<AddRecipe />} />
 			</Route>
 		</Routes>
 	);

@@ -1,28 +1,8 @@
 import { useState } from "react";
+import { categories } from "../../data/data";
 import style from "./style.module.css";
 
 function RecipeCategories() {
-	const categories = [
-		"Carnes",
-		"Vegano",
-		"Vegetariano",
-		"Desayunos",
-		"Infusiones",
-		"Tragos",
-		"Sopas",
-		"Ensaladas",
-		"Guarniciones",
-		"Postres",
-		"Panaderia",
-		"Pasteleria",
-		"Snacks",
-		"Festivo",
-		"Internacional",
-		"Pescados y mariscos",
-		"Pizzas",
-		"Empanadas",
-	];
-
 	const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
 	function handleCheckboxChange(event: React.ChangeEvent<HTMLInputElement>) {
