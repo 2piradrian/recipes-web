@@ -13,6 +13,7 @@ export type recipe = {
 	id: string;
 	name: string;
 	category: string;
+	time: string;
 	description: string;
 	ingredients: Array<ingredient>;
 	steps: Array<string>;

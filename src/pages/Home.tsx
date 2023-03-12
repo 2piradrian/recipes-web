@@ -7,6 +7,7 @@ function Home() {
 				author="Adrian Rodriguez"
 				category="Carnes"
 				comments={[]}
+				time=""
 				id="1"
 				image="https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/34/2021/12/Photo-by-Emerson-Vieira-on-Unsplash.jpg"
 				ingredients={[]}
