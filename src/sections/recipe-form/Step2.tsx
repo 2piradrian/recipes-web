@@ -36,12 +36,15 @@ function Step2({ handleStep }: Props) {
 			},
 			[]
 		);
-		console.log(ingredientArray);
 		const hasEmptyValue = ingredientArray.some((ingredient: ingredient) =>
 			Object.values(ingredient).some((value) => value === "")
 		);
 
-		if (hasEmptyValue) toast("No pueden quedar campos vacíos");
+		if (hasEmptyValue) {
+			return toast("No pueden quedar campos vacíos");
+		} else {
+			/* guardar el estado */
+		}
 	};
 
 	return (

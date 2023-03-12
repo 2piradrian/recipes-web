@@ -43,7 +43,6 @@ function Register() {
 
 		const userData = {
 			email: email,
-			password: password,
 			name: username,
 			surname: usersurname,
 			image: image,
