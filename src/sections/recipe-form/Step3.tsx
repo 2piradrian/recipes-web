@@ -26,7 +26,6 @@ function Step3({ handleStep }: Props) {
 		if (hasEmptyValue) {
 			return toast("No pueden quedar campos vacíos");
 		} else {
-			/* guardar el estado */
 		}
 	};
 

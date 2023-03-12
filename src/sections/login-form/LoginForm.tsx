@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
 import Titles from "../../components/titles/Titles";
 import useAccount from "../../hooks/useAccount";
@@ -30,9 +30,7 @@ function LoginForm() {
 								name="email"
 								placeholder="example@email.com"
 							/>
-							{errors.email && touched.email && (
-								<small className="error">{errors.email}</small>
-							)}
+							<ErrorMessage name="email" component="small" />
 						</div>
 						<div className="columnInputs">
 							<label htmlFor="password">Contraseña</label>
@@ -42,9 +40,7 @@ function LoginForm() {
 								name="password"
 								placeholder="* * * * * * * * * *"
 							/>
-							{errors.password && touched.password && (
-								<small className="error">{errors.password}</small>
-							)}
+							<ErrorMessage name="password" component="small" />
 						</div>
 						<button type="submit">Ingresar</button>
 					</Form>

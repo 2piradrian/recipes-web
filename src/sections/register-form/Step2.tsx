@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import useVerification from "../../hooks/useVerification";
 import PhotoSelector from "../../components/photo-selector/PhotoSelector";
 import { Toaster } from "react-hot-toast";
@@ -35,9 +35,7 @@ function Step2({ handleStep, dataStep }: Props) {
 									name="username"
 									placeholder="La Mona"
 								/>
-								{errors.username && touched.username && (
-									<small className="error">{errors.username}</small>
-								)}
+								<ErrorMessage name="username" component="small" />
 							</div>
 							<div className="columnInputs">
 								<label htmlFor="usersurname">Apellido</label>
@@ -47,9 +45,7 @@ function Step2({ handleStep, dataStep }: Props) {
 									name="usersurname"
 									placeholder="Jimenez"
 								/>
-								{errors.usersurname && touched.usersurname && (
-									<small className="error">{errors.usersurname}</small>
-								)}
+								<ErrorMessage name="usersurname" component="small" />
 							</div>
 						</div>
 						<PhotoSelector

@@ -37,7 +37,15 @@ function useVerification() {
 		),
 	});
 
-	return { UserSchema, RegisterSchema, SignInSchema, IngredientsSchema };
+	const RecipeSchema = Yup.object().shape({
+		title: Yup.string().required("Este campo es obligatorio"),
+		category: Yup.string().required("Este campo es obligatorio"),
+		estimatedTime: Yup.number().required("Este campo es obligatorio"),
+		unit: Yup.string().required("Este campo es obligatorio"),
+		imageUrl: Yup.string().url("Debe ser una URL válida").required("Este campo es obligatorio"),
+	});
+
+	return { UserSchema, RegisterSchema, SignInSchema, IngredientsSchema, RecipeSchema };
 }
 
 export default useVerification;
