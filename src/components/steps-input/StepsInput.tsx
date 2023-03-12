@@ -8,7 +8,7 @@ function StepsInput({ id }: Props) {
 	return (
 		<div className={style.arrowStep}>
 			<label>{id})</label>
-			<input placeholder="Azúcar" name={`name${id}`} />
+			<input placeholder="Que debo hacer ahora?" name={`name${id}`} />
 		</div>
 	);
 }

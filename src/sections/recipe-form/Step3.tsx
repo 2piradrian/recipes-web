@@ -1,5 +1,5 @@
 import React from "react";
-import { Toaster } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import DynamicSteps from "../../components/dynamic-steps/DynamicSteps";
 import Titles from "../../components/titles/Titles";
 
@@ -9,7 +9,26 @@ type Props = {
 };
 
 function Step3({ handleStep }: Props) {
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		const formData = new FormData(e.currentTarget).entries();
+		const inputs = Array.from(formData);
+		const stepArray: any = inputs.reduce((acc: { [index: number]: any }, [name, value]) => {
+			const index = parseInt(name.match(/\d+/)?.[0] || "0");
+			if (!acc[index]) {
+				acc[index] = [];
+			}
+			acc[index] = value;
+			return acc;
+		}, []);
+		const hasEmptyValue = stepArray.some((step: string) => step === "");
+
+		if (hasEmptyValue) {
+			return toast("No pueden quedar campos vacíos");
+		} else {
+			/* guardar el estado */
+		}
+	};
 
 	return (
 		<form className="form" onSubmit={(e) => handleSubmit(e)}>
