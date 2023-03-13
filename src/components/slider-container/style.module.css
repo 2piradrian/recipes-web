@@ -1,0 +1,14 @@
+.container {
+	width: 100%;
+	padding: 35px;
+	gap: 50px;
+	transition: all 1s ease-in-out;
+	display: flex;
+	overflow-x: auto;
+}
+
+@media (min-width: 1085px) {
+	.container {
+		justify-content: center;
+	}
+}

@@ -1,22 +1,25 @@
-import RecipeCard from "../components/recipe-card/RecipeCard";
+import { useEffect, useState } from "react";
+import useRecipes from "../hooks/useRecipes";
+import Welcome from "../sections/welcome/Welcome";
 
 function Home() {
-	return (
-		<div className="bigcontainer">
-			<RecipeCard
-				authorname="Adrian Rodriguez"
-				authoruid=""
-				category="Carnes"
-				comments={[]}
-				time=""
-				image="https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/34/2021/12/Photo-by-Emerson-Vieira-on-Unsplash.jpg"
-				ingredients={[]}
-				name="Asado argentino"
-				steps={[]}
-				description="Este alimento de origen animal es una de las fuentes de hierro más completas que existe. Además de esto, también es rica en aminoácidos y vitamina B12. A pesar de esto, lo recomendable es tener un consumo moderado de las carnes rojas. Veamos que se necesita para hacer este plato…"
-			/>
-		</div>
-	);
+	const { getPrincipalRecipes } = useRecipes();
+	const [recipes, setRecipes] = useState({
+		last3: [],
+		recommended: [],
+		following: [],
+	});
+
+	useEffect(() => {
+		const fetchRecipes = async () => {
+			/* TODO: Arreglar este tipo any */
+			const recipes: any = await getPrincipalRecipes();
+			setRecipes(recipes);
+		};
+		fetchRecipes();
+	}, [getPrincipalRecipes]);
+
+	return <Welcome recipes={recipes} />;
 }
 
 export default Home;

@@ -5,6 +5,7 @@
 	-webkit-box-shadow: 10px 10px 40px -17px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: 10px 10px 40px -17px rgba(0, 0, 0, 0.75);
 	box-shadow: 10px 10px 40px -17px rgba(0, 0, 0, 0.75);
+	transition: all 1s ease-in-out;
 }
 
 .info {
@@ -26,6 +27,10 @@
 .category {
 	margin: 10px 0px;
 	font-weight: 600;
+}
+
+.description {
+	height: 55px;
 }
 
 .interactive {

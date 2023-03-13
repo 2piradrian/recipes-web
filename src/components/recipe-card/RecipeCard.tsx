@@ -17,7 +17,7 @@ function RecipeCard({ name, image, category, description, authorname, authoruid 
 			<div className={style.info}>
 				<h3 className={style.name}>{setText(name, 20)}</h3>
 				<h4 className={style.category}>{category}</h4>
-				<p>{setText(description, 100)}</p>
+				<p className={style.description}>{setText(description, 100)}</p>
 				<div className={style.interactive}>
 					<UserTag author={authorname} />
 					{/* <MdFavorite /> */}
