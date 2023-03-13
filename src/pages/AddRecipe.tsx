@@ -32,10 +32,16 @@ function AddRecipe() {
 		setFormStep(formStep + number);
 	};
 
-	useEffect(() => {});
+	useEffect(() => {
+		const recipe = {
+			...dataStep1,
+			ingredients: dataStep2,
+			steps: dataStep3,
+		};
+		console.log(recipe);
+	}, [dataStep1, dataStep2, dataStep3]);
 
 	const isEnabled = (number: number) => {
-		toast("caca");
 		if (number === formStep) {
 			return {
 				display: "block",

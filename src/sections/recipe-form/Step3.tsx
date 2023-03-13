@@ -9,7 +9,7 @@ type Props = {
 	style: Object;
 };
 
-function Step3({ handleStep, style }: Props) {
+function Step3({ handleStep, dataStep, style }: Props) {
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget).entries();
@@ -27,6 +27,7 @@ function Step3({ handleStep, style }: Props) {
 		if (hasEmptyValue) {
 			return toast("No pueden quedar campos vacíos");
 		} else {
+			dataStep(stepArray);
 		}
 	};
 
