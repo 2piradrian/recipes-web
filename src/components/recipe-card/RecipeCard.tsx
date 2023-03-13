@@ -1,9 +1,9 @@
-import { MdFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { recipe } from "../../types/types";
 import UserTag from "../user-tag/UserTag";
 import style from "./style.module.css";
 
-function RecipeCard({ name, image, category, description, author }: recipe) {
+function RecipeCard({ name, image, category, description, authorname, authoruid }: recipe) {
 	const setText = (text: string, number: number) => {
 		if (text.length > number) {
 			text = text.slice(0, number) + "...";
@@ -19,7 +19,7 @@ function RecipeCard({ name, image, category, description, author }: recipe) {
 				<h4 className={style.category}>{category}</h4>
 				<p>{setText(description, 100)}</p>
 				<div className={style.interactive}>
-					<UserTag author={author} />
+					<UserTag author={authorname} />
 					{/* <MdFavorite /> */}
 					<MdOutlineFavoriteBorder />
 				</div>

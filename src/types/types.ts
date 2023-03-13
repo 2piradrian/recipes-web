@@ -18,7 +18,8 @@ export type recipe = {
 	steps: Array<string>;
 	comments: Array<comment>;
 	image: string;
-	author: string;
+	authorname: string;
+	authoruid: string;
 };
 
 export type partialUserData = {

@@ -58,11 +58,7 @@ function Step1({ handleStep, dataStep, style }: Props) {
 							<ErrorMessage name="unit" component="small" />
 						</div>
 					</div>
-					<div className="columnInputs">
-						<label>URL de la Imagen</label>
-						<Field type="text" placeholder="https://..." name="imageUrl" />
-						<ErrorMessage name="imageUrl" component="small" />
-					</div>
+
 					<div className="columnInputs">
 						<button type="submit">Siguiente</button>
 					</div>

@@ -42,10 +42,21 @@ function useVerification() {
 		category: Yup.string().required("Este campo es obligatorio"),
 		estimatedTime: Yup.number().required("Este campo es obligatorio"),
 		unit: Yup.string().required("Este campo es obligatorio"),
+	});
+
+	const DescriptionSchema = Yup.object().shape({
+		description: Yup.string().required("Este campo es obligatorio"),
 		imageUrl: Yup.string().url("Debe ser una URL válida").required("Este campo es obligatorio"),
 	});
 
-	return { UserSchema, RegisterSchema, SignInSchema, IngredientsSchema, RecipeSchema };
+	return {
+		UserSchema,
+		RegisterSchema,
+		SignInSchema,
+		IngredientsSchema,
+		RecipeSchema,
+		DescriptionSchema,
+	};
 }
 
 export default useVerification;

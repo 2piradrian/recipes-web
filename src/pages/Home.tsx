@@ -4,7 +4,8 @@ function Home() {
 	return (
 		<div className="bigcontainer">
 			<RecipeCard
-				author="Adrian Rodriguez"
+				authorname="Adrian Rodriguez"
+				authoruid=""
 				category="Carnes"
 				comments={[]}
 				time=""
