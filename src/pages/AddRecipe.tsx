@@ -1,56 +1,53 @@
-import { useState, useEffect } from "react";
-import { toast, Toaster } from "react-hot-toast";
-
+import { useState, useEffect, useContext } from "react";
+import { useSelector } from "react-redux";
+import useRecipes from "../hooks/useRecipes";
 import Step1 from "../sections/recipe-form/Step1";
 import Step2 from "../sections/recipe-form/Step2";
 import Step3 from "../sections/recipe-form/Step3";
-import { ingredient } from "../types/types";
+import { ingredient, recipe } from "../types/types";
 
 type Step1 = {
 	title: string;
 	category: string;
-	time: string;
-	image: string;
-};
-
-type Step2 = {
-	ingredients: Array<ingredient>;
-};
-
-type Step3 = {
-	steps: Array<string>;
+	estimatedTime: string;
+	imageUrl: string;
+	unit: string;
 };
 
 function AddRecipe() {
-	const [formStep, setFormStep] = useState(3);
+	const { uploadRecipe } = useRecipes();
+	const [formStep, setFormStep] = useState(1);
 
 	const [dataStep1, setDataStep1] = useState<Step1 | null>();
-	const [dataStep2, setDataStep2] = useState<Step2 | null>();
-	const [dataStep3, setDataStep3] = useState<Step3 | null>();
+	const [dataStep2, setDataStep2] = useState<Array<ingredient> | null>();
+	const [dataStep3, setDataStep3] = useState<Array<string> | null>();
 
-	const handleStep = (number: number) => {
-		setFormStep(formStep + number);
-	};
+	const author = useSelector((state: any) => state.userData);
 
 	useEffect(() => {
-		const recipe = {
-			...dataStep1,
-			ingredients: dataStep2,
-			steps: dataStep3,
-		};
-		console.log(recipe);
+		if (formStep === 4) {
+			const { title, category, estimatedTime, imageUrl, unit } = dataStep1!;
+			const recipe: recipe = {
+				description: "",
+				name: title,
+				category: category,
+				time: `${estimatedTime} ${unit}`,
+				image: imageUrl,
+				ingredients: dataStep2!,
+				steps: dataStep3!,
+				comments: [],
+				author: `${author.name} ${author.surname}`,
+			};
+			uploadRecipe(recipe);
+		}
 	}, [dataStep1, dataStep2, dataStep3]);
 
 	const isEnabled = (number: number) => {
-		if (number === formStep) {
-			return {
-				display: "block",
-			};
-		} else {
-			return {
-				display: "none",
-			};
-		}
+		return { display: number === formStep ? "block" : "none" };
+	};
+
+	const handleStep = (number: number) => {
+		setFormStep(formStep + number);
 	};
 
 	return (

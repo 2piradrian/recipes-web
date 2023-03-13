@@ -11,7 +11,6 @@ function useAccount() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	/* colección de recetas */
-	const recipesCollection = collection(db, "recipes");
 
 	/* crea una cuenta sin tener que exponer el auth */
 	const createAccountWithEmail = (email: string, password: string, userData: partialUserData) => {

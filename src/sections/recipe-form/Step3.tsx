@@ -28,6 +28,7 @@ function Step3({ handleStep, dataStep, style }: Props) {
 			return toast("No pueden quedar campos vacíos");
 		} else {
 			dataStep(stepArray);
+			handleStep(1);
 		}
 	};
 

@@ -10,7 +10,6 @@ export type comment = {
 };
 
 export type recipe = {
-	id: string;
 	name: string;
 	category: string;
 	time: string;
