@@ -7,9 +7,10 @@ import "../../styles/forms.css";
 type Props = {
 	handleStep: (number: number) => void;
 	dataStep: (data: any) => void;
+	style: Object;
 };
 
-function Step2({ handleStep }: Props) {
+function Step2({ handleStep, style }: Props) {
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		/* este código me hizo sufrir mucho */
@@ -42,14 +43,15 @@ function Step2({ handleStep }: Props) {
 		);
 
 		if (hasEmptyValue) {
-			return toast("No pueden quedar campos vacíos");
+			console.log(1);
+			toast.error("No pueden quedar campos vacíos");
 		} else {
 			/* guardar el estado */
 		}
 	};
 
 	return (
-		<form className="form" onSubmit={(e) => handleSubmit(e)}>
+		<form className="form" onSubmit={(e) => handleSubmit(e)} style={style}>
 			<Titles title="Colaborá con recetas" subtitle="ahora los ingredientes" />
 			<DynamicIngredients />
 			<div className="arrowInputs">
@@ -62,7 +64,6 @@ function Step2({ handleStep }: Props) {
 				</button>
 				<button type="submit">Siguiente</button>
 			</div>
-			<Toaster position="top-right" />
 		</form>
 	);
 }

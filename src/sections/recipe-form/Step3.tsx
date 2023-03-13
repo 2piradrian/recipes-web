@@ -6,9 +6,10 @@ import Titles from "../../components/titles/Titles";
 type Props = {
 	handleStep: (number: number) => void;
 	dataStep: (data: any) => void;
+	style: Object;
 };
 
-function Step3({ handleStep }: Props) {
+function Step3({ handleStep, style }: Props) {
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget).entries();
@@ -30,7 +31,7 @@ function Step3({ handleStep }: Props) {
 	};
 
 	return (
-		<form className="form" onSubmit={(e) => handleSubmit(e)}>
+		<form className="form" onSubmit={(e) => handleSubmit(e)} style={style}>
 			<Titles title="Colaborá con recetas" subtitle="por último, el paso a paso" />
 			<DynamicSteps />
 			<div className="arrowInputs">

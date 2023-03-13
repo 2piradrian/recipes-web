@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Layout from "./layout/Layout";
 import { AuthProvider } from "./provider/AuthProvider";
@@ -11,6 +12,7 @@ function App() {
 			<Layout>
 				<AuthProvider>
 					<AllRoutes />
+					<Toaster position="top-right" />
 				</AuthProvider>
 			</Layout>
 		</QueryClientProvider>

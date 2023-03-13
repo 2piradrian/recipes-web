@@ -9,9 +9,10 @@ import "../../styles/forms.css";
 type Props = {
 	handleStep: (number: number) => void;
 	dataStep: (data: any) => void;
+	style: Object;
 };
 
-function Step1({ handleStep, dataStep }: Props) {
+function Step1({ handleStep, dataStep, style }: Props) {
 	const { RecipeSchema } = useVerification();
 
 	return (
@@ -29,9 +30,8 @@ function Step1({ handleStep, dataStep }: Props) {
 				handleStep(1);
 			}}>
 			{() => (
-				<Form className="form">
+				<Form className="form" style={style}>
 					<Titles title="Colaborá con recetas" subtitle="creemos una nueva receta 👨‍🍳" />
-
 					<div className="columnInputs">
 						<label>Título</label>
 						<Field type="text" placeholder="Pollo al disco" name="title" />
@@ -39,7 +39,9 @@ function Step1({ handleStep, dataStep }: Props) {
 					</div>
 					<div className="columnInputs">
 						<label>Categoria</label>
-						<FormSelector data={categories} label="Categorias" name="category" />
+						<Field as="select" name="category">
+							<FormSelector data={categories} label="Categorias" />
+						</Field>
 						<ErrorMessage name="category" component="small" />
 					</div>
 					<div className="arrowInputs">
@@ -50,7 +52,9 @@ function Step1({ handleStep, dataStep }: Props) {
 						</div>
 						<div className="columnInputs">
 							<label>Unidad</label>
-							<FormSelector data={time} label="Unidad" name="unit" />
+							<Field as="select" name="unit">
+								<FormSelector data={time} label="Unidad" />
+							</Field>
 							<ErrorMessage name="unit" component="small" />
 						</div>
 					</div>

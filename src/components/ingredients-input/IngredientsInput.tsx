@@ -12,7 +12,9 @@ function IngredientsInput({ id }: Props) {
 				<input placeholder="Cant." name={`cant${id}`} />
 			</div>
 			<div className="columnInputs">
-				<FormSelector data={unit} label="Unidad" name={`unit${id}`} />
+				<select name={`unit${id}`}>
+					<FormSelector data={unit} label="Unidad" />
+				</select>
 			</div>
 			<div className="columnInputs">
 				<input placeholder="Azúcar" name={`name${id}`} />

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { toast, Toaster } from "react-hot-toast";
 
 import Step1 from "../sections/recipe-form/Step1";
 import Step2 from "../sections/recipe-form/Step2";
@@ -33,18 +34,26 @@ function AddRecipe() {
 
 	useEffect(() => {});
 
-	const renderStep = () => {
-		switch (formStep) {
-			case 1:
-				return <Step1 handleStep={handleStep} dataStep={setDataStep1} />;
-			case 2:
-				return <Step2 handleStep={handleStep} dataStep={setDataStep2} />;
-			case 3:
-				return <Step3 handleStep={handleStep} dataStep={setDataStep3} />;
+	const isEnabled = (number: number) => {
+		toast("caca");
+		if (number === formStep) {
+			return {
+				display: "block",
+			};
+		} else {
+			return {
+				display: "none",
+			};
 		}
 	};
 
-	return <section className="bigcontainer">{renderStep()}</section>;
+	return (
+		<section className="bigcontainer">
+			<Step1 handleStep={handleStep} dataStep={setDataStep1} style={isEnabled(1)} />
+			<Step2 handleStep={handleStep} dataStep={setDataStep2} style={isEnabled(2)} />
+			<Step3 handleStep={handleStep} dataStep={setDataStep3} style={isEnabled(3)} />
+		</section>
+	);
 }
 
 export default AddRecipe;
