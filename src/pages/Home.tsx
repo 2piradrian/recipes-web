@@ -17,7 +17,7 @@ function Home() {
 			setRecipes(recipes);
 		};
 		fetchRecipes();
-	}, [getPrincipalRecipes]);
+	}, []);
 
 	return <Welcome recipes={recipes} />;
 }
