@@ -8,12 +8,14 @@ import PrivateRoute from "./PrivateRoute";
 import Register from "../pages/Register";
 import User from "../pages/User";
 import AddRecipe from "../pages/AddRecipe";
+import Recipe from "../pages/Recipe";
 
 function AllRoutes() {
 	return (
 		<Routes>
 			<Route path="/home" element={<Home />} />
 			<Route path="/explore" element={<Explore />} />
+			<Route path="/recipe/:id" element={<Recipe />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/register" element={<Register />} />
 			<Route path="/" element={<Navigate to="/home" />} />

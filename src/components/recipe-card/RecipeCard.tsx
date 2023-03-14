@@ -1,9 +1,12 @@
 import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import { recipe } from "../../types/types";
 import UserTag from "../user-tag/UserTag";
 import style from "./style.module.css";
 
-function RecipeCard({ name, image, category, description, authorname, authoruid }: recipe) {
+function RecipeCard({ id, name, image, category, description, authorname, authoruid }: recipe) {
+	const navigate = useNavigate();
+
 	const setText = (text: string, number: number) => {
 		if (text.length > number) {
 			text = text.slice(0, number) + "...";
@@ -12,7 +15,7 @@ function RecipeCard({ name, image, category, description, authorname, authoruid 
 	};
 
 	return (
-		<div className={style.container}>
+		<div className={style.container} onClick={() => navigate(`/recipe/${id}`)}>
 			<img src={image} alt={name} className={style.image} />
 			<div className={style.info}>
 				<h3 className={style.name}>{setText(name, 20)}</h3>
