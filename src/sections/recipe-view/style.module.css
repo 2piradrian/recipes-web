@@ -10,6 +10,40 @@
 }
 
 .name {
+	width: 80%;
 	font-weight: 700;
 	font-size: 26px;
+}
+
+.image {
+	width: 80%;
+	max-width: 700px;
+	margin: 10px 0px;
+	border-radius: 16px;
+	object-fit: cover;
+}
+
+.description {
+	width: 80%;
+	max-width: 700px;
+	font-size: 18px;
+}
+
+.time {
+	width: 80%;
+}
+
+.ingredient {
+	width: 80%;
+}
+
+.steps {
+	width: 80%;
+}
+
+h2 {
+	width: 80%;
+	margin: 10px 0px;
+	font-weight: 700;
+	font-size: 18px;
 }
