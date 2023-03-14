@@ -9,12 +9,12 @@ const queryClient = new QueryClient();
 function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
-			<Layout>
-				<AuthProvider>
+			<AuthProvider>
+				<Layout>
 					<AllRoutes />
-					<Toaster position="top-right" />
-				</AuthProvider>
-			</Layout>
+				</Layout>
+				<Toaster position="top-right" />
+			</AuthProvider>
 		</QueryClientProvider>
 	);
 }

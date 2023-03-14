@@ -1,0 +1,15 @@
+.container {
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	overflow-y: auto;
+	padding-top: 100px;
+}
+
+.name {
+	font-weight: 700;
+	font-size: 26px;
+}
