@@ -20,11 +20,15 @@ function useRecipes() {
 
 	/* añade la receta a la colección de recetas públicas */
 	const uploadRecipe = async (recipe: recipe) => {
+		console.log("uploadRecipe", recipe);
 		const docRef = await addDoc(recipesCollection, recipe);
+		console.log("documento subido");
 		/* agregar al documento usuario que esta receta le pertenece */
+		console.log("id documento", docRef.id);
 		updateDoc(doc(usersCollection, userData.email), {
 			recipes: [...userData.recipes, docRef.id],
 		});
+		console.log("documento añadido");
 	};
 
 	/* trae las recetas que se muestran en /home */

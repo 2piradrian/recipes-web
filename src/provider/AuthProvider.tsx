@@ -8,6 +8,7 @@ import { fullUserData } from "../types/types";
 
 type AuthContextType = {
 	auth: User | null;
+	getUserDataAsync: (email: string) => Promise<void>;
 };
 
 const initialAuth: User | null = null;
@@ -18,6 +19,7 @@ interface AuthProviderProps {
 
 const AuthContext = createContext<AuthContextType>({
 	auth: initialAuth,
+	getUserDataAsync: async () => {},
 });
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
@@ -52,7 +54,9 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 		return () => unregisterAuthObserver();
 	}, []);
 
-	return <AuthContext.Provider value={{ auth }}>{children}</AuthContext.Provider>;
+	return (
+		<AuthContext.Provider value={{ auth, getUserDataAsync }}>{children}</AuthContext.Provider>
+	);
 };
 
 export { AuthContext, AuthProvider };

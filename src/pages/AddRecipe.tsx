@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import useRecipes from "../hooks/useRecipes";
+import { AuthContext } from "../provider/AuthProvider";
 import Step1 from "../sections/recipe-form/Step1";
 import Step2 from "../sections/recipe-form/Step2";
 import Step3 from "../sections/recipe-form/Step3";
@@ -23,6 +24,8 @@ type Step2 = {
 function AddRecipe() {
 	const { uploadRecipe } = useRecipes();
 	const [formStep, setFormStep] = useState(1);
+	const { getUserDataAsync } = useContext(AuthContext);
+	const userData = useSelector((state: any) => state.userData);
 
 	const [dataStep1, setDataStep1] = useState<Step1 | null>();
 	const [dataStep2, setDataStep2] = useState<Step2 | null>();
@@ -33,6 +36,8 @@ function AddRecipe() {
 
 	useEffect(() => {
 		if (formStep === 5) {
+			/* actualizar la lista de ids de recetas */
+			getUserDataAsync(userData.email);
 			const { title, category, estimatedTime, unit } = dataStep1!;
 			const { imageUrl, description } = dataStep2!;
 			const recipe: recipe = {
@@ -47,6 +52,7 @@ function AddRecipe() {
 				authorname: `${author.name} ${author.surname}`,
 				authoruid: author.uid,
 			};
+			console.log(recipe);
 			uploadRecipe(recipe);
 			toast.success("Receta creada exitosamente");
 		}
