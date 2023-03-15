@@ -21,4 +21,16 @@ export const categories = [
 
 export const time = ["minutos", "horas", "días"];
 
-export const unit = ["gramo(s)", "kilo(s)", "mililitro(s)", "litro(s)", "taza(s)", "cucharada(s)"];
+export const unit = [
+	"gramo(s)",
+	"kilo(s)",
+	"mililitro(s)",
+	"litro(s)",
+	"taza(s)",
+	"cucharada(s)",
+	"cucharadita(s)",
+	"unidad(es)",
+	"puñado(s)",
+	"diente(s)",
+	"a gusto",
+];
