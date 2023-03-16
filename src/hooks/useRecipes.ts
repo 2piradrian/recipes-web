@@ -16,7 +16,7 @@ import {
 import { useSelector } from "react-redux";
 
 function useRecipes() {
-	const [lastRecipe, setLastRecipe] = useState<recipe | null>(null);
+	const [lastRecipe, setLastRecipe] = useState<recipe | boolean>(true);
 
 	const recipesCollection = collection(db, "recipes");
 	const usersCollection = collection(db, "users");
@@ -51,6 +51,9 @@ function useRecipes() {
 
 	/* traer recetas de 10 en 10 */
 	const lazyRecipes = async () => {
+		/* si no hay mas recetas no sigas buscando */
+		if (!lastRecipe) return { list: [], lastDoc: false };
+		/* sino, ejecutá la query */
 		const q = query(recipesCollection, limit(5), orderBy("name"), startAfter(lastRecipe));
 		const recipesOfTheStep = await getDocs(q).then((snapshot) => {
 			const arrayOfRecipes: any = [];
@@ -68,10 +71,8 @@ function useRecipes() {
 		return recipesOfTheStep;
 	};
 	const getLazyRecipes = async () => {
-		if (startAfter === undefined) return;
 		const recipesOfTheStep = await lazyRecipes();
 		setLastRecipe(recipesOfTheStep.lastDoc);
-		/* setRecipes((prevRecipes) => [...prevRecipes, ...recipesOfTheStep.list]); */
 		return recipesOfTheStep.list;
 	};
 
