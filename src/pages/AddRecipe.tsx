@@ -52,7 +52,6 @@ function AddRecipe() {
 				authorname: `${author.name} ${author.surname}`,
 				authoruid: author.uid,
 			};
-			console.log(recipe);
 			uploadRecipe(recipe);
 			toast.success("Receta creada exitosamente");
 		}

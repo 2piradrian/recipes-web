@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { recipe } from "./../types/types";
 import { db } from "./../firebase";
 import {
@@ -7,28 +8,28 @@ import {
 	getDoc,
 	getDocs,
 	limit,
+	orderBy,
 	query,
+	startAfter,
 	updateDoc,
 } from "firebase/firestore";
 import { useSelector } from "react-redux";
 
 function useRecipes() {
-	const userData = useSelector((state: any) => state.userData);
+	const [lastRecipe, setLastRecipe] = useState<recipe | null>(null);
 
 	const recipesCollection = collection(db, "recipes");
 	const usersCollection = collection(db, "users");
 
+	const userData = useSelector((state: any) => state.userData);
+
 	/* añade la receta a la colección de recetas públicas */
 	const uploadRecipe = async (recipe: recipe) => {
-		console.log("uploadRecipe", recipe);
 		const docRef = await addDoc(recipesCollection, recipe);
-		console.log("documento subido");
 		/* agregar al documento usuario que esta receta le pertenece */
-		console.log("id documento", docRef.id);
 		updateDoc(doc(usersCollection, userData.email), {
 			recipes: [...userData.recipes, docRef.id],
 		});
-		console.log("documento añadido");
 	};
 
 	/* trae las recetas que se muestran en /home */
@@ -48,7 +49,33 @@ function useRecipes() {
 		return docSnap.data();
 	};
 
-	return { uploadRecipe, getPrincipalRecipes, getRecipe };
+	/* traer recetas de 10 en 10 */
+	const lazyRecipes = async () => {
+		const q = query(recipesCollection, limit(5), orderBy("name"), startAfter(lastRecipe));
+		const recipesOfTheStep = await getDocs(q).then((snapshot) => {
+			const arrayOfRecipes: any = [];
+			const arrayOfLastRecipes: any = [];
+			snapshot.docs.map((doc) => {
+				const recipeDoc = { id: doc.id, ...doc.data() } as recipe;
+				arrayOfRecipes.push(recipeDoc);
+				arrayOfLastRecipes.push(doc);
+			});
+			return {
+				list: arrayOfRecipes,
+				lastDoc: arrayOfLastRecipes[arrayOfLastRecipes.length - 1],
+			};
+		});
+		return recipesOfTheStep;
+	};
+	const getLazyRecipes = async () => {
+		if (startAfter === undefined) return;
+		const recipesOfTheStep = await lazyRecipes();
+		setLastRecipe(recipesOfTheStep.lastDoc);
+		/* setRecipes((prevRecipes) => [...prevRecipes, ...recipesOfTheStep.list]); */
+		return recipesOfTheStep.list;
+	};
+
+	return { uploadRecipe, getPrincipalRecipes, getRecipe, getLazyRecipes };
 }
 
 export default useRecipes;
