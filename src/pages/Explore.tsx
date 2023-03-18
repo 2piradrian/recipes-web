@@ -2,10 +2,10 @@ import { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
 import RecipeCard from "../components/recipe-card/RecipeCard";
 import SearchBar from "../components/search-bar/SearchBar";
-import { RecipeContext } from "../context/RecipesContext";
+import useScroll from "../hooks/useScroll";
 
 function Explore() {
-	const { recipes, handleScroll } = useContext(RecipeContext);
+	const { recipes, handleScroll } = useScroll();
 	const filterData = useSelector((state: any) => state.filterData);
 
 	useEffect(() => {
