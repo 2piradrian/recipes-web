@@ -9,7 +9,7 @@ type Props = {
 function Layout({ children }: Props) {
 	return (
 		<>
-			{/* <Header /> */}
+			<Header />
 			<Sidebar />
 			<main>{children}</main>
 		</>

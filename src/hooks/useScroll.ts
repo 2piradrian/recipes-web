@@ -11,7 +11,6 @@ function useScroll() {
 		if (scrollTop + clientHeight >= scrollHeight - 175) {
 			const recipesList = await getLazyRecipes();
 			setRecipes(recipes.concat(...recipesList));
-			/* window.scrollTo(0, 0); */
 		}
 	};
 

@@ -1,16 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import RecipeCard from "../components/recipe-card/RecipeCard";
-import useRecipes from "../hooks/useRecipes";
+import SearchBar from "../components/search-bar/SearchBar";
 import useScroll from "../hooks/useScroll";
+import { filter_category, filter_name, no_filters } from "../redux/actions/actions";
 
 function Explore() {
 	const { recipes, handleScroll } = useScroll();
+	const [filter, setFilter] = useState<string | null>("");
+
+	const dispatch = useDispatch();
 
 	useEffect(() => {
+		dispatch(filter ? filter_category(filter) : no_filters());
 		handleScroll();
 	}, []);
+
 	return (
 		<div className="bigcontainer">
+			<SearchBar setFilter={setFilter} />
 			<div
 				style={{
 					height: "100%",
@@ -21,7 +30,7 @@ function Explore() {
 					gap: "20px",
 					padding: "50px",
 				}}>
-				{recipes?.map((recipe) => (
+				{recipes.map((recipe) => (
 					<RecipeCard key={recipe.id} {...recipe} />
 				))}
 			</div>

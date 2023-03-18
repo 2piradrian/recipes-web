@@ -22,6 +22,7 @@ function useRecipes() {
 	const usersCollection = collection(db, "users");
 
 	const userData = useSelector((state: any) => state.userData);
+	const filterData = useSelector((state: any) => state.filterData);
 
 	/* añade la receta a la colección de recetas públicas */
 	const uploadRecipe = async (recipe: recipe) => {
@@ -54,7 +55,13 @@ function useRecipes() {
 		/* si no hay mas recetas no sigas buscando */
 		if (!lastRecipe) return { list: [], lastDoc: false };
 		/* sino, ejecutá la query */
-		const q = query(recipesCollection, limit(5), orderBy("name"), startAfter(lastRecipe));
+		const q = query(
+			recipesCollection,
+			filterData,
+			limit(5),
+			orderBy("description"),
+			startAfter(lastRecipe)
+		);
 		const recipesOfTheStep = await getDocs(q).then((snapshot) => {
 			const arrayOfRecipes: any = [];
 			const arrayOfLastRecipes: any = [];
