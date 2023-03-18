@@ -7,7 +7,6 @@ import { db } from "../firebase";
 import { recipe } from "../types/types";
 import { createContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { boolean } from "yup";
 
 type RecipeContextType = {
 	recipes: Array<recipe>;
@@ -86,9 +85,12 @@ const RecipeProvider = ({ children }: RecipeProviderProps) => {
 	}, [filterData]);
 
 	useEffect(() => {
+		const updateStates = async () => {
+			setRecipes(await getLazyRecipes());
+		};
 		if (typeof lastRecipe === "boolean" && !recipes.length) {
 			console.log("testing", lastRecipe);
-			getLazyRecipes();
+			updateStates();
 		}
 	}, [recipes, lastRecipe, filterData]);
 

@@ -13,7 +13,6 @@ export const categories = [
 	"Pasteleria",
 	"Snacks",
 	"Festivo",
-	"Internacional",
 	"Pescados y mariscos",
 	"Pizzas",
 	"Empanadas",
