@@ -7,6 +7,7 @@ import { db } from "../firebase";
 import { recipe } from "../types/types";
 import { createContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { boolean } from "yup";
 
 type RecipeContextType = {
 	recipes: Array<recipe>;
@@ -31,6 +32,7 @@ const RecipeProvider = ({ children }: RecipeProviderProps) => {
 
 	const handleScroll = async () => {
 		const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+		console.log("ON BOTTOM => ", scrollTop + clientHeight >= scrollHeight - 175);
 		if (scrollTop + clientHeight >= scrollHeight - 175) {
 			const recipesList = await getLazyRecipes();
 			setRecipes(recipes.concat(...recipesList));
@@ -67,6 +69,7 @@ const RecipeProvider = ({ children }: RecipeProviderProps) => {
 	const getLazyRecipes = async () => {
 		const recipesOfTheStep = await lazyRecipes();
 		setLastRecipe(recipesOfTheStep.lastDoc);
+		console.log("Lazy recipes", recipesOfTheStep.list);
 		return recipesOfTheStep.list;
 	};
 
@@ -76,6 +79,18 @@ const RecipeProvider = ({ children }: RecipeProviderProps) => {
 			window.removeEventListener("scroll", handleScroll);
 		};
 	}, [handleScroll]);
+
+	useEffect(() => {
+		setLastRecipe(true);
+		setRecipes([]);
+	}, [filterData]);
+
+	useEffect(() => {
+		if (typeof lastRecipe === "boolean" && !recipes.length) {
+			console.log("testing", lastRecipe);
+			getLazyRecipes();
+		}
+	}, [recipes, lastRecipe, filterData]);
 
 	return (
 		<RecipeContext.Provider value={{ recipes, handleScroll }}>

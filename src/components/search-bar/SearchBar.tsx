@@ -1,12 +1,19 @@
 import style from "./style.module.css";
 import { categories } from "../../data/data";
-import { Dispatch, SetStateAction } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { filter_category, no_filters } from "../../redux/actions/actions";
 
-type Props = {
-	setFilter: Dispatch<SetStateAction<string | null>>;
-};
+function SearchBar() {
+	const [filter, setFilter] = useState<string | null>("");
 
-function SearchBar({ setFilter }: Props) {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		/* handleScroll(); */
+		dispatch(filter ? filter_category(filter) : no_filters());
+	}, [filter]);
+
 	return (
 		<div className={style.container}>
 			<form className="form">
