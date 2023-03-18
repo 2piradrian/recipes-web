@@ -8,7 +8,15 @@ type Props = {
 function UserTag({ author }: Props) {
 	return (
 		<div className={style.container}>
-			<img src={nouser} alt="profile photo" className={style.photo} />
+			<img
+				src={`../../assets/profile/${1}.jpg`}
+				onError={({ currentTarget }) => {
+					currentTarget.onerror = null;
+					currentTarget.src = nouser;
+				}}
+				alt="profile photo"
+				className={style.photo}
+			/>
 			<p className={style.author}>{author}</p>
 		</div>
 	);

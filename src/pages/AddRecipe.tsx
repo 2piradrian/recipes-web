@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import useRecipes from "../hooks/useRecipes";
@@ -51,6 +51,7 @@ function AddRecipe() {
 				comments: [],
 				authorname: `${author.name} ${author.surname}`,
 				authoruid: author.uid,
+				authorphoto: author.image,
 			};
 			uploadRecipe(recipe);
 			toast.success("Receta creada exitosamente");

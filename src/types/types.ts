@@ -21,6 +21,7 @@ export type recipe = {
 	image: string;
 	authorname: string;
 	authoruid: string;
+	authorphoto?: string;
 };
 
 export type partialUserData = {
