@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { recipe } from "./../types/types";
 import { db } from "./../firebase";
 import {
@@ -23,6 +23,10 @@ function useRecipes() {
 
 	const userData = useSelector((state: any) => state.userData);
 	const filterData = useSelector((state: any) => state.filterData);
+
+	useEffect(() => {
+		setLastRecipe(true);
+	}, [filterData]);
 
 	/* añade la receta a la colección de recetas públicas */
 	const uploadRecipe = async (recipe: recipe) => {
