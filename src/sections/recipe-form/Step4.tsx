@@ -6,6 +6,7 @@ import Titles from "../../components/titles/Titles";
 type Props = {
 	handleStep: (number: number) => void;
 	dataStep: (data: any) => void;
+	data: any;
 	style: Object;
 };
 

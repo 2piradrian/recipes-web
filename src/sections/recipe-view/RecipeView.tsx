@@ -1,4 +1,5 @@
 import { recipe } from "../../types/types";
+import { useSelector } from "react-redux";
 import style from "./style.module.css";
 
 type Props = {
@@ -6,6 +7,8 @@ type Props = {
 };
 
 function RecipeView({ recipe }: Props) {
+	const userData = useSelector((state: any) => state.userData);
+
 	return (
 		<div className={style.container}>
 			<h1 className={style.name}>{recipe?.name}</h1>
@@ -25,6 +28,9 @@ function RecipeView({ recipe }: Props) {
 			{recipe.steps.map((step, index) => (
 				<p className={style.steps}>{`${index + 1}) ${step}`}</p>
 			))}
+			{userData.uid === recipe.authoruid ? (
+				<div className={style.actionButton}>Holi</div>
+			) : null}
 		</div>
 	);
 }

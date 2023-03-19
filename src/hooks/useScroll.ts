@@ -13,7 +13,6 @@ function useScroll() {
 
 	const handleScroll = async () => {
 		const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-		console.log("ON BOTTOM => ", scrollTop + clientHeight >= scrollHeight - 175);
 		if (scrollTop + clientHeight >= scrollHeight - 175) {
 			const recipesList = await getLazyRecipes();
 			setRecipes(recipes.concat(...recipesList));
@@ -50,7 +49,6 @@ function useScroll() {
 	const getLazyRecipes = async () => {
 		const recipesOfTheStep = await lazyRecipes();
 		setLastRecipe(recipesOfTheStep.lastDoc);
-		console.log("Lazy recipes", recipesOfTheStep.list);
 		return recipesOfTheStep.list;
 	};
 
@@ -71,7 +69,6 @@ function useScroll() {
 			setRecipes(await getLazyRecipes());
 		};
 		if (typeof lastRecipe === "boolean" && !recipes.length) {
-			console.log("testing", lastRecipe);
 			updateStates();
 		}
 	}, [recipes, lastRecipe, filterData]);

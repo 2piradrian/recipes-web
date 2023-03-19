@@ -9,6 +9,7 @@ import "../../styles/forms.css";
 type Props = {
 	handleStep: (number: number) => void;
 	dataStep: (data: any) => void;
+	data: any;
 	style: Object;
 };
 
