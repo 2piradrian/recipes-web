@@ -29,8 +29,16 @@ function RecipeEditor() {
 	const { getUserDataAsync } = useContext(AuthContext);
 
 	const [formStep, setFormStep] = useState(1);
-	const [dataStep1, setDataStep1] = useState<Step1 | null>();
-	const [dataStep2, setDataStep2] = useState<Step2 | null>();
+	const [dataStep1, setDataStep1] = useState<Step1>({
+		title: "",
+		category: "",
+		estimatedTime: "",
+		unit: "",
+	});
+	const [dataStep2, setDataStep2] = useState<Step2>({
+		imageUrl: "",
+		description: "",
+	});
 	const [dataStep3, setDataStep3] = useState<Array<ingredient> | null>();
 	const [dataStep4, setDataStep4] = useState<Array<string> | null>();
 

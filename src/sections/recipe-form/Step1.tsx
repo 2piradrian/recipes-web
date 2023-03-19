@@ -13,19 +13,13 @@ type Props = {
 	style: Object;
 };
 
-function Step1({ handleStep, dataStep, style }: Props) {
+function Step1({ handleStep, dataStep, data, style }: Props) {
 	const { RecipeSchema } = useVerification();
-
 	return (
 		<Formik
-			initialValues={{
-				title: "",
-				category: "",
-				estimatedTime: "",
-				unit: "",
-				imageUrl: "",
-			}}
+			initialValues={{ ...data }}
 			validationSchema={RecipeSchema}
+			enableReinitialize
 			onSubmit={(values) => {
 				dataStep(values);
 				handleStep(1);

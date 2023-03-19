@@ -1,13 +1,17 @@
 import { recipe } from "../../types/types";
 import { useSelector } from "react-redux";
 import style from "./style.module.css";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
 	recipe: recipe;
 };
 
 function RecipeView({ recipe }: Props) {
+	const navigate = useNavigate();
 	const userData = useSelector((state: any) => state.userData);
+
+	console.log(recipe);
 
 	return (
 		<div className={style.container}>
@@ -29,7 +33,13 @@ function RecipeView({ recipe }: Props) {
 				<p className={style.steps}>{`${index + 1}) ${step}`}</p>
 			))}
 			{userData.uid === recipe.authoruid ? (
-				<div className={style.actionButton}>Holi</div>
+				<div
+					className={style.actionButton}
+					onClick={() => {
+						navigate(`/editor/${recipe.id}`);
+					}}>
+					Holi
+				</div>
 			) : null}
 		</div>
 	);

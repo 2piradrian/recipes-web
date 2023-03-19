@@ -51,7 +51,11 @@ function useRecipes() {
 	/* trae una receta por id */
 	const getRecipe = async (id: string) => {
 		const docSnap = await getDoc(doc(db, "recipes", id));
-		return docSnap.data();
+		const recipe: recipe = {
+			id: docSnap.id,
+			...(docSnap.data() as recipe),
+		};
+		return recipe;
 	};
 
 	/* traer recetas de 10 en 10 */

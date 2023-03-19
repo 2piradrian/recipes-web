@@ -1,7 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import FormSelector from "../../components/form-selector/FormSelector";
 import Titles from "../../components/titles/Titles";
-import { categories, time } from "../../data/data";
 import useVerification from "../../hooks/useVerification";
 
 import "../../styles/forms.css";
@@ -13,19 +11,13 @@ type Props = {
 	style: Object;
 };
 
-function Step2({ handleStep, dataStep, style }: Props) {
+function Step2({ handleStep, dataStep, data, style }: Props) {
 	const { DescriptionSchema } = useVerification();
-
 	return (
 		<Formik
-			initialValues={{
-				title: "",
-				category: "",
-				estimatedTime: "",
-				unit: "",
-				imageUrl: "",
-			}}
+			initialValues={{ ...data }}
 			validationSchema={DescriptionSchema}
+			enableReinitialize
 			onSubmit={(values) => {
 				dataStep(values);
 				handleStep(1);
