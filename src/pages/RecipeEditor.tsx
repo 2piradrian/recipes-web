@@ -39,8 +39,8 @@ function RecipeEditor() {
 		imageUrl: "",
 		description: "",
 	});
-	const [dataStep3, setDataStep3] = useState<Array<ingredient> | null>();
-	const [dataStep4, setDataStep4] = useState<Array<string> | null>();
+	const [dataStep3, setDataStep3] = useState<Array<ingredient>>([]);
+	const [dataStep4, setDataStep4] = useState<Array<string>>([]);
 
 	const userData = useSelector((state: any) => state.userData);
 
@@ -60,6 +60,7 @@ function RecipeEditor() {
 				imageUrl: recipe!.image,
 				description: recipe!.description,
 			});
+			console.log(recipe!.ingredients);
 			setDataStep3(recipe!.ingredients);
 			setDataStep4(recipe!.steps);
 		};

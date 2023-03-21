@@ -3,8 +3,12 @@ import IngredientsInput from "../ingredients-input/IngredientsInput";
 
 import style from "./style.module.css";
 
-function DynamicIngredients() {
-	const [count, setCount] = useState(1);
+type Props = {
+	data: any[];
+};
+
+function DynamicIngredients({ data }: Props) {
+	const [count, setCount] = useState(data.length || 1);
 
 	const handleDecrease = () => {
 		if (count > 1) {
@@ -17,9 +21,16 @@ function DynamicIngredients() {
 	};
 
 	let ingredients = [];
-	for (let i = 0; i < count; i++) {
-		ingredients.push(<IngredientsInput key={i} id={i} />);
+	if (!data.length) {
+		for (let i = 0; i < count; i++) {
+			ingredients.push(<IngredientsInput key={i} id={i} />);
+		}
+	} else {
+		ingredients = data.map((ingredient, index) => (
+			<IngredientsInput key={index} id={index} ingredient={ingredient} />
+		));
 	}
+
 	return (
 		<div className="columnInputs">
 			<label>Ingredientes</label>

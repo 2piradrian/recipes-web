@@ -3,8 +3,12 @@ import StepsInput from "../steps-input/StepsInput";
 
 import style from "./style.module.css";
 
-function DynamicSteps() {
-	const [count, setCount] = useState(1);
+type Props = {
+	data: any;
+};
+
+function DynamicSteps({ data }: Props) {
+	const [count, setCount] = useState(data.length || 1);
 
 	const handleDecrease = () => {
 		if (count > 1) {
@@ -17,8 +21,14 @@ function DynamicSteps() {
 	};
 
 	let steps = [];
-	for (let i = 0; i < count; i++) {
-		steps.push(<StepsInput key={i} id={i} />);
+	if (!data.length) {
+		for (let i = 0; i < count; i++) {
+			steps.push(<StepsInput key={i} id={i} />);
+		}
+	} else {
+		steps = data.map((step: string, index: number) => (
+			<StepsInput key={index} id={index} step={step} />
+		));
 	}
 	return (
 		<div className="columnInputs">

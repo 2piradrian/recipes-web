@@ -10,7 +10,7 @@ type Props = {
 	style: Object;
 };
 
-function Step4({ handleStep, dataStep, style }: Props) {
+function Step4({ handleStep, dataStep, data, style }: Props) {
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget).entries();
@@ -36,7 +36,7 @@ function Step4({ handleStep, dataStep, style }: Props) {
 	return (
 		<form className="form" onSubmit={(e) => handleSubmit(e)} style={style}>
 			<Titles title="Colaborá con recetas" subtitle="por último, el paso a paso" />
-			<DynamicSteps />
+			<DynamicSteps data={data} />
 			<div className="arrowInputs">
 				<button
 					type="button"
@@ -45,7 +45,7 @@ function Step4({ handleStep, dataStep, style }: Props) {
 					}}>
 					Atrás
 				</button>
-				<button type="submit">Siguiente</button>
+				<button type="submit">Subir</button>
 			</div>
 			<Toaster position="top-right" />
 		</form>

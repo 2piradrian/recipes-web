@@ -1,6 +1,6 @@
 import Titles from "../../components/titles/Titles";
 import DynamicIngredients from "../../components/dynamic-ingredients/DynamicIngredients";
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { ingredient } from "../../types/types";
 import "../../styles/forms.css";
 
@@ -11,7 +11,7 @@ type Props = {
 	style: Object;
 };
 
-function Step3({ handleStep, dataStep, style }: Props) {
+function Step3({ handleStep, dataStep, data, style }: Props) {
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		/* este código me hizo sufrir mucho */
@@ -54,7 +54,7 @@ function Step3({ handleStep, dataStep, style }: Props) {
 	return (
 		<form className="form" onSubmit={(e) => handleSubmit(e)} style={style}>
 			<Titles title="Colaborá con recetas" subtitle="ahora los ingredientes" />
-			<DynamicIngredients />
+			<DynamicIngredients data={data} />
 			<div className="arrowInputs">
 				<button
 					type="button"
