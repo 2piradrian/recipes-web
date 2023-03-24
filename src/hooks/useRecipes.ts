@@ -1,4 +1,4 @@
-import { set_local_data } from "./../redux/actions/actions";
+import { set_local_data, set_user_data, update_user_data } from "./../redux/actions/actions";
 import { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { recipe } from "./../types/types";
@@ -29,9 +29,13 @@ function useRecipes() {
 	const uploadRecipe = async (recipe: recipe) => {
 		const docRef = await addDoc(recipesCollection, recipe);
 		/* agregar al documento usuario que esta receta le pertenece */
-		updateDoc(doc(usersCollection, userData.email), {
-			recipes: [...userData.recipes, docRef.id],
-		}).then(() => toast.success("Receta subida exitosamente"));
+		dispatch(
+			update_user_data({
+				...userData,
+				recipes: [...userData.recipes, docRef.id],
+			})
+		);
+		toast.success("Receta subida exitosamente");
 	};
 
 	/* trae las recetas que se muestran en /home */

@@ -13,7 +13,12 @@ export const get_user_data = (email: string) => ({
 	payload: email,
 });
 
-export const set_user_data = (data: fullUserData | null) => ({
+export const set_user_data = (data: fullUserData) => ({
+	type: SET_USER_DATA,
+	payload: data,
+});
+
+export const update_user_data = (data: { email: string; recipes: string[] }) => ({
 	type: SET_USER_DATA,
 	payload: data,
 });

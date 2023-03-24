@@ -48,3 +48,15 @@ export type action = {
 	type: string;
 	payload: any;
 };
+
+export type Step1 = {
+	title: string;
+	category: string;
+	estimatedTime: string;
+	unit: string;
+};
+
+export type Step2 = {
+	imageUrl: string;
+	description: string;
+};

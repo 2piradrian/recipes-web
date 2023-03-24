@@ -10,6 +10,8 @@ function IngredientsInput({ id, ingredient }: Props) {
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>
 	) => {
+		if (!ingredient) return;
+
 		const { name, value } = e.target;
 		ingredient[name] = value;
 	};

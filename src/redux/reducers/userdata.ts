@@ -1,15 +1,18 @@
-import { setUserData } from "./../utils/userdata";
-import { SET_LOCAL_DATA, SET_USER_DATA } from "../types/types";
+import { db } from "./../../firebase";
+import { collection, doc, setDoc, updateDoc } from "firebase/firestore";
+import { SET_LOCAL_DATA, SET_USER_DATA, UPDATE_USER_DATA } from "../types/types";
 import { action, fullUserData } from "./../../types/types";
 
 export const userdataReducer = (state: fullUserData | {} = {}, action: action) => {
 	const { payload, type } = action;
 	switch (type) {
 		case SET_USER_DATA:
-			/* establece en el state el documento del usuario al registrarse */
-			/* además, lo sube a firerbase */
-			setUserData(payload);
+			/* establece en el state el documento del usuario y además, lo sube a firerbase */
+			setDoc(doc(collection(db, "users"), payload.email), payload);
 			return { ...payload };
+		case UPDATE_USER_DATA:
+			updateDoc(doc(collection(db, "users"), payload.email), payload);
+			return { ...state };
 		case SET_LOCAL_DATA:
 			/* establece en el state el documento de información del usuario */
 			return { ...payload };
