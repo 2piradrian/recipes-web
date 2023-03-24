@@ -25,8 +25,8 @@ type Step2 = {
 function RecipeEditor() {
 	/* TODO: MOVER LOGICA A CUSTOM HOOK */
 	const { id } = useParams();
-	const { uploadRecipe, getRecipe } = useRecipes();
-	const { getUserDataAsync } = useContext(AuthContext);
+	const { updateRecipe, uploadRecipe, getRecipe } = useRecipes();
+	const { syncUserData } = useContext(AuthContext);
 
 	const [formStep, setFormStep] = useState(1);
 	const [dataStep1, setDataStep1] = useState<Step1>({
@@ -68,18 +68,21 @@ function RecipeEditor() {
 	}, []);
 
 	useEffect(() => {
+		const recipe: recipe = buildRecipe();
+
 		if (formStep === 5) {
-			/* actualizar la lista de ids de recetas */
-			getUserDataAsync(userData.email);
-			const recipe: recipe = buildRecipe();
-			uploadRecipe(recipe);
-			toast.success("Receta creada exitosamente");
+			syncUserData(userData.email);
+			if (id) {
+				updateRecipe(recipe, id);
+			} else {
+				uploadRecipe(recipe);
+			}
 		}
 	}, [dataStep1, dataStep2, dataStep3, dataStep4]);
 
 	const buildRecipe = () => {
-		const { title, category, estimatedTime, unit } = dataStep1!;
-		const { imageUrl, description } = dataStep2!;
+		const { title, category, estimatedTime, unit } = dataStep1;
+		const { imageUrl, description } = dataStep2;
 		return {
 			description: description,
 			name: title,

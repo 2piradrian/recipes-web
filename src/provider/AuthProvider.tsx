@@ -8,7 +8,7 @@ import { fullUserData } from "../types/types";
 
 type AuthContextType = {
 	auth: User | null;
-	getUserDataAsync: (email: string) => Promise<void>;
+	syncUserData: (email: string) => Promise<void>;
 };
 
 const initialAuth: User | null = null;
@@ -19,7 +19,7 @@ interface AuthProviderProps {
 
 const AuthContext = createContext<AuthContextType>({
 	auth: initialAuth,
-	getUserDataAsync: async () => {},
+	syncUserData: async () => {},
 });
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
@@ -27,7 +27,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 	const dispatch = useDispatch();
 
 	/* se trae el documento del usuario y lo almacena en redux */
-	const getUserDataAsync = async (email: string) => {
+	const syncUserData = async (email: string) => {
 		try {
 			const userData = await getUserData(email);
 			dispatch(set_local_data(userData as fullUserData));
@@ -45,7 +45,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 		const unregisterAuthObserver = getAuth().onAuthStateChanged(function (user) {
 			if (user) {
 				setAuth(user);
-				getUserDataAsync(user.email || "");
+				syncUserData(user.email || "");
 			} else {
 				setAuth(null);
 				dispatch(set_local_data(null));
@@ -54,9 +54,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 		return () => unregisterAuthObserver();
 	}, []);
 
-	return (
-		<AuthContext.Provider value={{ auth, getUserDataAsync }}>{children}</AuthContext.Provider>
-	);
+	return <AuthContext.Provider value={{ auth, syncUserData }}>{children}</AuthContext.Provider>;
 };
 
 export { AuthContext, AuthProvider };

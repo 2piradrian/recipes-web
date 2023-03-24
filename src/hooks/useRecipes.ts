@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { recipe } from "./../types/types";
 import { db } from "./../firebase";
@@ -8,9 +9,7 @@ import {
 	getDoc,
 	getDocs,
 	limit,
-	orderBy,
 	query,
-	startAfter,
 	updateDoc,
 } from "firebase/firestore";
 import { useSelector } from "react-redux";
@@ -34,7 +33,7 @@ function useRecipes() {
 		/* agregar al documento usuario que esta receta le pertenece */
 		updateDoc(doc(usersCollection, userData.email), {
 			recipes: [...userData.recipes, docRef.id],
-		});
+		}).then(() => toast.success("Receta subida exitosamente"));
 	};
 
 	/* trae las recetas que se muestran en /home */
@@ -58,40 +57,14 @@ function useRecipes() {
 		return recipe;
 	};
 
-	/* traer recetas de 10 en 10 */
-	const lazyRecipes = async () => {
-		/* si no hay mas recetas no sigas buscando */
-		if (!lastRecipe) return { list: [], lastDoc: false };
-		/* sino, ejecutá la query */
-		const q = query(
-			recipesCollection,
-			filterData,
-			limit(5),
-			orderBy("description"),
-			startAfter(lastRecipe)
+	/* actualizar receta */
+	const updateRecipe = async (recipe: recipe, id: string) => {
+		updateDoc(doc(recipesCollection, id), recipe).then(() =>
+			toast.success("Receta actualizada exitosamente")
 		);
-		const recipesOfTheStep = await getDocs(q).then((snapshot) => {
-			const arrayOfRecipes: any = [];
-			const arrayOfLastRecipes: any = [];
-			snapshot.docs.map((doc) => {
-				const recipeDoc = { id: doc.id, ...doc.data() } as recipe;
-				arrayOfRecipes.push(recipeDoc);
-				arrayOfLastRecipes.push(doc);
-			});
-			return {
-				list: arrayOfRecipes,
-				lastDoc: arrayOfLastRecipes[arrayOfLastRecipes.length - 1],
-			};
-		});
-		return recipesOfTheStep;
-	};
-	const getLazyRecipes = async () => {
-		const recipesOfTheStep = await lazyRecipes();
-		setLastRecipe(recipesOfTheStep.lastDoc);
-		return recipesOfTheStep.list;
 	};
 
-	return { uploadRecipe, getPrincipalRecipes, getRecipe, getLazyRecipes };
+	return { uploadRecipe, getPrincipalRecipes, getRecipe, updateRecipe };
 }
 
 export default useRecipes;
