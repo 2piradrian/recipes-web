@@ -15,17 +15,10 @@ import {
 import { useSelector } from "react-redux";
 
 function useRecipes() {
-	const [lastRecipe, setLastRecipe] = useState<recipe | boolean>(true);
-
 	const recipesCollection = collection(db, "recipes");
 	const usersCollection = collection(db, "users");
 
 	const userData = useSelector((state: any) => state.userData);
-	const filterData = useSelector((state: any) => state.filterData);
-
-	useEffect(() => {
-		setLastRecipe(true);
-	}, [filterData]);
 
 	/* añade la receta a la colección de recetas públicas */
 	const uploadRecipe = async (recipe: recipe) => {
