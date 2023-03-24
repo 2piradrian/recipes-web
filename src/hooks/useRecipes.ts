@@ -1,3 +1,4 @@
+import { set_local_data } from "./../redux/actions/actions";
 import { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { recipe } from "./../types/types";
@@ -14,13 +15,15 @@ import {
 } from "firebase/firestore";
 import { useSelector } from "react-redux";
 import { AuthContext } from "../provider/AuthProvider";
+import { useDispatch } from "react-redux";
 
 function useRecipes() {
+	const dispatch = useDispatch();
 	const recipesCollection = collection(db, "recipes");
 	const usersCollection = collection(db, "users");
 
-	const userData = useSelector((state: any) => state.userData);
 	const { syncUserData } = useContext(AuthContext);
+	const userData = useSelector((state: any) => state.userData);
 
 	/* añade la receta a la colección de recetas públicas */
 	const uploadRecipe = async (recipe: recipe) => {
@@ -70,12 +73,18 @@ function useRecipes() {
 			updatedLikes = [...likes, id!];
 		}
 
+		/* TODO: Convertirlo a un solo objeto */
 		updateDoc(doc(usersCollection, userData.email), {
 			...userData,
 			favourites: updatedLikes,
 		});
 
-		syncUserData(userData.email);
+		dispatch(
+			set_local_data({
+				...userData,
+				favourites: updatedLikes,
+			})
+		);
 	};
 
 	return { uploadRecipe, getPrincipalRecipes, getRecipe, updateRecipe, manageLike };
