@@ -35,14 +35,21 @@
 }
 
 .interactive {
+	padding: 0px 10px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
-.interactive > svg {
+.interactive svg {
 	font-size: 22px;
 	cursor: pointer;
+}
+
+.likesContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 @keyframes onCreate {

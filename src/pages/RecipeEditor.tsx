@@ -60,7 +60,6 @@ function RecipeEditor() {
 				imageUrl: recipe!.image,
 				description: recipe!.description,
 			});
-			console.log(recipe!.ingredients);
 			setDataStep3(recipe!.ingredients);
 			setDataStep4(recipe!.steps);
 		};
