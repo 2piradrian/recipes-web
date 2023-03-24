@@ -1,4 +1,4 @@
-import { set_local_data, update_user_data } from "./../redux/actions/actions";
+import { update_user_data } from "./../redux/actions/actions";
 import { toast } from "react-hot-toast";
 import { recipe } from "./../types/types";
 import { db } from "./../firebase";
@@ -18,7 +18,6 @@ import { useDispatch } from "react-redux";
 function useRecipes() {
 	const dispatch = useDispatch();
 	const recipesCollection = collection(db, "recipes");
-	const usersCollection = collection(db, "users");
 
 	const userData = useSelector((state: any) => state.userData);
 

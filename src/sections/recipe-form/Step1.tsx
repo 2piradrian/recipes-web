@@ -48,7 +48,7 @@ function Step1({ handleStep, dataStep, data, style }: Props) {
 						<div className="columnInputs">
 							<label>Unidad</label>
 							<Field as="select" name="unit">
-								<FormSelector data={time} label="Unidad" />
+								<FormSelector data={time} label="Tiempo" />
 							</Field>
 							<ErrorMessage name="unit" component="small" />
 						</div>

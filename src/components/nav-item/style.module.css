@@ -15,9 +15,31 @@
 	transition: all 400ms ease-in-out;
 }
 
-.icon > svg {
+.active {
+	background: white;
+	margin-left: 15px;
+}
+
+.active > p {
+	color: var(--addornOff);
+}
+
+.inactive > p {
+	color: var(--addornOn);
+}
+
+.active > .icon > svg {
+	color: var(--addornOff);
+}
+
+.inactive > .icon > svg {
+	color: var(--addornOn);
+}
+
+.icon svg {
 	height: 100%;
 	font-size: 20px;
+	/* color: var(--addornOn); */
 }
 .route > p {
 	font-size: 18px;

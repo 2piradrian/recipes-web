@@ -25,4 +25,5 @@
 	right: 10px;
 	font-size: 28px;
 	cursor: pointer;
+	color: var(--addornOn);
 }

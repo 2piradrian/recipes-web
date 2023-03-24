@@ -28,7 +28,7 @@ function IngredientsInput({ id, ingredient }: Props) {
 			</div>
 			<div className="columnInputs">
 				<select name={`unit${id}`} value={ingredient?.unit} onChange={handleChange}>
-					<FormSelector data={unit} label="Unidad" />
+					<FormSelector data={unit} label="Medida" />
 				</select>
 			</div>
 			<div className="columnInputs">

@@ -9,16 +9,13 @@ type Props = {
 };
 
 function NavItem({ state, icon, name, route }: Props) {
-	const activeStyle = {
-		background: "white",
-		marginLeft: "15px",
-	};
-
 	return (
 		<NavLink
-			className={style.route}
 			to={route}
-			style={({ isActive }) => (isActive && route !== "/user" ? activeStyle : undefined)}>
+			className={({ isActive }) =>
+				`${isActive && route !== "/user" ? style.active : style.inactive}
+				${style.route}`
+			}>
 			<div className={style.icon}>{icon}</div>
 			<p style={state ? { opacity: "1", width: "auto" } : { opacity: "0", width: "0px" }}>
 				{name}

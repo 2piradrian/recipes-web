@@ -27,10 +27,12 @@ button {
 	height: 45px;
 	width: 100%;
 	margin: 15px 0px;
+	font-size: 18px;
 	border: none;
 	border-radius: 10px;
 	cursor: pointer;
 	background: var(--main);
+	color: var(--addornOn);
 }
 
 small {
@@ -53,12 +55,16 @@ select {
 	width: 100%;
 	height: 45px;
 	font-weight: 400;
-	font-size: 16px;
+	font-size: 14px;
 	padding-left: 15px;
 	border: 2px solid var(--main);
 	background: var(--background);
 	border-radius: 10px;
 	cursor: pointer;
+}
+
+select::placeholder {
+	color: var(--placeholder);
 }
 
 .arrowInputs {

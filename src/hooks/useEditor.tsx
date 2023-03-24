@@ -1,16 +1,13 @@
 import { useState } from "react";
-import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { ingredient, recipe, Step1, Step2 } from "../types/types";
 import { useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { AuthContext } from "../provider/AuthProvider";
 import useRecipes from "./useRecipes";
 
 function useEditor() {
 	const { id } = useParams();
 	const { updateRecipe, uploadRecipe, getRecipe } = useRecipes();
-	const { syncUserData } = useContext(AuthContext);
 
 	const [formStep, setFormStep] = useState(1);
 	const [dataStep1, setDataStep1] = useState<Step1>({
@@ -54,8 +51,6 @@ function useEditor() {
 		const recipe: recipe = buildRecipe();
 
 		if (formStep === 5) {
-			/* syncUserData(userData.email); */
-			console.log(recipe);
 			if (id) {
 				updateRecipe(recipe, id);
 			} else {
