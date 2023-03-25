@@ -18,6 +18,7 @@
 .active {
 	background: white;
 	margin-left: 15px;
+	width: 25px;
 }
 
 .active > p {
