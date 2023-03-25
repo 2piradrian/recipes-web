@@ -38,7 +38,7 @@ a {
 	min-height: 100vh;
 	width: 100%;
 	padding-top: 30px;
-	padding-left: 40px;
+	padding-left: 50px;
 	display: flex;
 	flex-direction: column;
 	justify-content: start;
@@ -61,7 +61,7 @@ a {
 	min-height: 100vh;
 	width: 100%;
 	padding-top: 30px;
-	padding-left: 40px;
+	padding-left: 50px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
