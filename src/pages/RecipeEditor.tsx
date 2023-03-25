@@ -19,7 +19,7 @@ function RecipeEditor() {
 	} = useEditor();
 
 	return (
-		<section className="bigcontainer">
+		<section className="centercontainer">
 			<Step1
 				handleStep={handleStep}
 				dataStep={setDataStep1}

@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import FormSelector from "../../components/form-selector/FormSelector";
+import StepTitle from "../../components/step-title/StepTitle";
 import Titles from "../../components/titles/Titles";
 import { categories, time } from "../../data/data";
 import useVerification from "../../hooks/useVerification";
@@ -26,7 +27,7 @@ function Step1({ handleStep, dataStep, data, style }: Props) {
 			}}>
 			{() => (
 				<Form className="form" style={style}>
-					<Titles title="Colaborá con recetas" subtitle="creemos una nueva receta 👨‍🍳" />
+					<StepTitle step={1} title="¡Empecemos!" />
 					<div className="columnInputs">
 						<label>Título</label>
 						<Field type="text" placeholder="Pollo al disco" name="title" />
