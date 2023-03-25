@@ -1,8 +1,8 @@
-import Titles from "../../components/titles/Titles";
 import DynamicIngredients from "../../components/dynamic-ingredients/DynamicIngredients";
 import { toast } from "react-hot-toast";
 import { ingredient } from "../../types/types";
 import "../../styles/forms.css";
+import StepTitle from "../../components/step-title/StepTitle";
 
 type Props = {
 	handleStep: (number: number) => void;
@@ -53,7 +53,7 @@ function Step3({ handleStep, dataStep, data, style }: Props) {
 
 	return (
 		<form className="form" onSubmit={(e) => handleSubmit(e)} style={style}>
-			<Titles title="Colaborá con recetas" subtitle="ahora los ingredientes" />
+			<StepTitle step={3} title="¿Qué ingredientes lleva?" />
 			<DynamicIngredients data={data} />
 			<div className="arrowInputs">
 				<button

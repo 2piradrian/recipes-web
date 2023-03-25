@@ -1,7 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import FormSelector from "../../components/form-selector/FormSelector";
 import StepTitle from "../../components/step-title/StepTitle";
-import Titles from "../../components/titles/Titles";
 import { categories, time } from "../../data/data";
 import useVerification from "../../hooks/useVerification";
 

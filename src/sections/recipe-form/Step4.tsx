@@ -1,7 +1,7 @@
 import React from "react";
 import { toast, Toaster } from "react-hot-toast";
 import DynamicSteps from "../../components/dynamic-steps/DynamicSteps";
-import Titles from "../../components/titles/Titles";
+import StepTitle from "../../components/step-title/StepTitle";
 
 type Props = {
 	handleStep: (number: number) => void;
@@ -35,7 +35,7 @@ function Step4({ handleStep, dataStep, data, style }: Props) {
 
 	return (
 		<form className="form" onSubmit={(e) => handleSubmit(e)} style={style}>
-			<Titles title="Colaborá con recetas" subtitle="por último, el paso a paso" />
+			<StepTitle step={4} title="Paso a paso" />
 			<DynamicSteps data={data} />
 			<div className="arrowInputs">
 				<button

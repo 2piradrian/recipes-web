@@ -33,14 +33,14 @@ function DynamicIngredients({ data }: Props) {
 
 	return (
 		<div className="columnInputs">
-			<label>Ingredientes</label>
-			<div className="arrowInputs">
-				<div className={style.ingredientsBtnContainer}>
-					<button type="button" className={style.ingredientsBtn} onClick={handleDecrease}>
-						Quitar ingrediente
+			<div className="dynamicContainer">
+				<label>Ingredientes</label>
+				<div className="quantityContainer">
+					<button type="button" className="quantityBtn" onClick={handleDecrease}>
+						-
 					</button>
-					<button type="button" className={style.ingredientsBtn} onClick={handleIncrease}>
-						Añadir ingrediente
+					<button type="button" className="quantityBtn" onClick={handleIncrease}>
+						+
 					</button>
 				</div>
 			</div>

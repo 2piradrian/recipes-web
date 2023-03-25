@@ -21,12 +21,13 @@ input {
 label {
 	width: 100%;
 	padding-left: 5px;
+	font-size: 18px;
 }
 
 button {
 	height: 45px;
 	width: 100%;
-	margin: 15px 0px;
+	margin: 10px 0px;
 	font-size: 18px;
 	border: none;
 	border-radius: 10px;
@@ -65,6 +66,32 @@ select {
 
 select::placeholder {
 	color: var(--placeholder);
+}
+
+.dynamicContainer {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.quantityContainer {
+	width: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.quantityBtn {
+	height: 30px;
+	width: 30px;
+	margin: 10px 5px;
+	font-size: 18px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	background: var(--main);
+	color: var(--addornOn);
 }
 
 .arrowInputs {

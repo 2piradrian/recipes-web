@@ -32,18 +32,18 @@ function DynamicSteps({ data }: Props) {
 	}
 	return (
 		<div className="columnInputs">
-			<label>Pasos</label>
-			<div className={style.stepsContainer}>{steps}</div>
-			<div className="arrowInputs">
-				<div className={style.stepsBtnContainer}>
-					<button type="button" className={style.stepsBtn} onClick={handleDecrease}>
-						Quitar paso
+			<div className="dynamicContainer">
+				<label>Pasos a seguir</label>
+				<div className="quantityContainer">
+					<button type="button" className="quantityBtn" onClick={handleDecrease}>
+						-
 					</button>
-					<button type="button" className={style.stepsBtn} onClick={handleIncrease}>
-						Añadir paso
+					<button type="button" className="quantityBtn" onClick={handleIncrease}>
+						+
 					</button>
 				</div>
 			</div>
+			<div className={style.stepsContainer}>{steps}</div>
 		</div>
 	);
 }
