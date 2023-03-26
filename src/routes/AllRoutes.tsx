@@ -23,7 +23,7 @@ function AllRoutes() {
 			<Route element={<PrivateRoute />}>
 				<Route path="/user" element={<User />} />
 				<Route path="/favourites" element={<Favourites />} />
-				<Route path="/myrecipes" element={<RecipeEditor />} /> {/* <MyRecipes /> */}
+				<Route path="/myrecipes" element={<MyRecipes />} />
 				<Route path="/editor" element={<RecipeEditor />} />
 				<Route path="/editor/:id" element={<RecipeEditor />} />
 			</Route>
