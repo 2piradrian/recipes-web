@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Loader from "../../components/loader/Loader";
+import NoList from "../../components/no-list/NoList";
 import RecipeCard from "../../components/recipe-card/RecipeCard";
 import useRecipes from "../../hooks/useRecipes";
 import { recipe } from "../../types/types";
@@ -20,6 +21,7 @@ function FavouritesView() {
 	return (
 		<div className={style.container}>
 			{favs ? favs.map((fav) => <RecipeCard key={fav.id} {...fav} />) : <Loader />}
+			{!favs?.length ? <NoList text="Vaya, aun no has dado likes..." /> : null}
 		</div>
 	);
 }

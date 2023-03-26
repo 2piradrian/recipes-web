@@ -6,6 +6,7 @@ import style from "./style.module.css";
 import RecipeCard from "../../components/recipe-card/RecipeCard";
 import Loader from "../../components/loader/Loader";
 import ActionButton from "../../components/action-button/ActionButton";
+import NoList from "../../components/no-list/NoList";
 
 function MyRecipesView() {
 	const [userRecipes, setUserRecipes] = useState<Array<recipe>>([]);
@@ -26,6 +27,7 @@ function MyRecipesView() {
 			) : (
 				<Loader />
 			)}
+			{!userRecipes?.length ? <NoList text="Vaya, aun no has subido recetas..." /> : null}
 			<ActionButton content={<MdOutlineLibraryAdd />} route="/editor" />
 		</div>
 	);

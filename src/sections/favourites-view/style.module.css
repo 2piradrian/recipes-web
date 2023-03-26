@@ -8,3 +8,8 @@
 	gap: 50px;
 	flex-wrap: wrap;
 }
+
+.empty {
+	width: 100%;
+	text-align: center;
+}
