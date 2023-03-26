@@ -46,7 +46,7 @@ function useRecipes() {
 	};
 
 	/* trae una receta por id */
-	const getRecipe = async (id: string) => {
+	const getRecipeById = async (id: string) => {
 		const docSnap = await getDoc(doc(db, "recipes", id));
 		const recipe: recipe = {
 			id: docSnap.id,
@@ -60,6 +60,14 @@ function useRecipes() {
 		updateDoc(doc(recipesCollection, id), recipe).then(() =>
 			toast.success("Receta actualizada exitosamente")
 		);
+	};
+
+	/* obtener las favoritas */
+	const getFavourites = async () => {
+		const favs = userData.favourites;
+		const promises = favs.map((fav: string) => getRecipeById(fav));
+		const recipes = await Promise.all(promises);
+		return recipes;
 	};
 
 	/* manejador de likes */
@@ -81,7 +89,14 @@ function useRecipes() {
 		);
 	};
 
-	return { uploadRecipe, getPrincipalRecipes, getRecipe, updateRecipe, manageLike };
+	return {
+		uploadRecipe,
+		getPrincipalRecipes,
+		getRecipeById,
+		updateRecipe,
+		getFavourites,
+		manageLike,
+	};
 }
 
 export default useRecipes;

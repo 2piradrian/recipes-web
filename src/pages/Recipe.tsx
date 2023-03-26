@@ -7,16 +7,16 @@ import { recipe } from "../types/types";
 
 function Recipe() {
 	const { id } = useParams();
-	const { getRecipe } = useRecipes();
+	const { getRecipeById } = useRecipes();
 	const [request, setRequest] = useState<recipe | null | undefined>();
 
 	useEffect(() => {
 		const fetchRecipe = async () => {
-			const recipe = await getRecipe(id!);
+			const recipe = await getRecipeById(id!);
 			setRequest(recipe as recipe);
 		};
 		fetchRecipe();
-	}, []);
+	}, [getRecipeById, id]);
 
 	return (
 		<div className="bigcontainer">{request ? <RecipeView recipe={request} /> : <Loader />}</div>

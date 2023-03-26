@@ -7,7 +7,7 @@ import useRecipes from "./useRecipes";
 
 function useEditor() {
 	const { id } = useParams();
-	const { updateRecipe, uploadRecipe, getRecipe } = useRecipes();
+	const { updateRecipe, uploadRecipe, getRecipeById } = useRecipes();
 
 	const [formStep, setFormStep] = useState(1);
 	const [dataStep1, setDataStep1] = useState<Step1>({
@@ -28,7 +28,7 @@ function useEditor() {
 	useEffect(() => {
 		if (!id) return;
 		const getRecipeByID = async () => {
-			const recipe = await getRecipe(id);
+			const recipe = await getRecipeById(id);
 			if (recipe!.authoruid !== userData.uid) return <Navigate to="/user" replace />;
 			/* contruir la receta en los pasos */
 			setDataStep1({
@@ -45,7 +45,7 @@ function useEditor() {
 			setDataStep4(recipe!.steps);
 		};
 		getRecipeByID();
-	}, []);
+	}, [getRecipeById, id, userData]);
 
 	useEffect(() => {
 		const recipe: recipe = buildRecipe();
@@ -57,7 +57,7 @@ function useEditor() {
 				uploadRecipe(recipe);
 			}
 		}
-	}, [dataStep1, dataStep2, dataStep3, dataStep4]);
+	}, [dataStep1, dataStep2, dataStep3, dataStep4, formStep]);
 
 	const buildRecipe = () => {
 		const { title, category, estimatedTime, unit } = dataStep1;
