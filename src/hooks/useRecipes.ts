@@ -62,10 +62,10 @@ function useRecipes() {
 		);
 	};
 
-	/* obtener las favoritas */
-	const getFavourites = async () => {
-		const favs = userData.favourites;
-		const promises = favs.map((fav: string) => getRecipeById(fav));
+	/* obtener las favoritas o las creadas por el usuario */
+	const getListOfRecipes = async (type: boolean = false) => {
+		const list = type ? userData.recipes : userData.favourites;
+		const promises = list.map((id: string) => getRecipeById(id));
 		const recipes = await Promise.all(promises);
 		return recipes;
 	};
@@ -94,7 +94,7 @@ function useRecipes() {
 		getPrincipalRecipes,
 		getRecipeById,
 		updateRecipe,
-		getFavourites,
+		getListOfRecipes,
 		manageLike,
 	};
 }
