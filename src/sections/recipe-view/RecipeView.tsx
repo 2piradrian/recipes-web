@@ -1,17 +1,15 @@
 import { recipe } from "../../types/types";
 import { useSelector } from "react-redux";
+import { AiFillEdit } from "react-icons/ai";
+import ActionButton from "../../components/action-button/ActionButton";
 import style from "./style.module.css";
-import { useNavigate } from "react-router-dom";
 
 type Props = {
 	recipe: recipe;
 };
 
 function RecipeView({ recipe }: Props) {
-	const navigate = useNavigate();
 	const userData = useSelector((state: any) => state.userData);
-
-	console.log(recipe);
 
 	return (
 		<div className={style.container}>
@@ -33,13 +31,7 @@ function RecipeView({ recipe }: Props) {
 				<p className={style.steps}>{`${index + 1}) ${step}`}</p>
 			))}
 			{userData.uid === recipe.authoruid ? (
-				<div
-					className={style.actionButton}
-					onClick={() => {
-						navigate(`/editor/${recipe.id}`);
-					}}>
-					Holi
-				</div>
+				<ActionButton content={<AiFillEdit />} route={`/editor/${recipe.id}`} />
 			) : null}
 		</div>
 	);

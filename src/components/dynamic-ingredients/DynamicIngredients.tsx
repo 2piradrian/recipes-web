@@ -4,7 +4,7 @@ import IngredientsInput from "../ingredients-input/IngredientsInput";
 import style from "./style.module.css";
 
 type Props = {
-	data: any[];
+	data: string[];
 };
 
 function DynamicIngredients({ data }: Props) {
