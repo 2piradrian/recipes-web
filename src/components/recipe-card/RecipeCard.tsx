@@ -14,7 +14,6 @@ function RecipeCard({ id, name, image, category, description, authorname, author
 	const userData: fullUserData = useSelector((state: any) => state.userData);
 
 	useEffect(() => {
-		console.log({ name, category, authorname, authorphoto });
 		setLiked(userData.favourites?.includes(id!));
 	}, [userData]);
 

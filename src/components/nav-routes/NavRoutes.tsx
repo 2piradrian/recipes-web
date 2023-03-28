@@ -6,12 +6,16 @@ import { MdFavorite } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import nouser from "../../assets/nouser.jpg";
+import { useSelector } from "react-redux";
+import { photoList } from "../../data/data";
 
 type Props = {
 	state: boolean;
 };
 
 function NavRoutes({ state }: Props) {
+	const userData = useSelector((state: any) => state.userData);
+
 	return (
 		<>
 			<div className={style.routes}>
@@ -22,7 +26,17 @@ function NavRoutes({ state }: Props) {
 			</div>
 			<div className={style.user}>
 				<NavItem
-					icon={<img src={nouser} alt="profile photo" className={style.userimg} />}
+					icon={
+						<img
+							src={photoList[parseInt(userData.image)] || nouser}
+							onError={({ currentTarget }) => {
+								currentTarget.onerror = null;
+								currentTarget.src = nouser;
+							}}
+							alt="profile"
+							className={style.userimg}
+						/>
+					}
 					name="Perfil"
 					route="/user"
 					state={state}
