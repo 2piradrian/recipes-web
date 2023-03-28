@@ -7,13 +7,14 @@ import { fullUserData, recipe } from "../../types/types";
 import UserTag from "../user-tag/UserTag";
 import style from "./style.module.css";
 
-function RecipeCard({ id, name, image, category, description, authorname, authoruid }: recipe) {
+function RecipeCard({ id, name, image, category, description, authorname, authorphoto }: recipe) {
 	const navigate = useNavigate();
 	const { manageLike } = useRecipes();
 	const [liked, setLiked] = useState(false);
 	const userData: fullUserData = useSelector((state: any) => state.userData);
 
 	useEffect(() => {
+		console.log({ name, category, authorname, authorphoto });
 		setLiked(userData.favourites?.includes(id!));
 	}, [userData]);
 
@@ -35,7 +36,7 @@ function RecipeCard({ id, name, image, category, description, authorname, author
 				</div>
 			</div>
 			<div className={style.interactive}>
-				<UserTag author={authorname} />
+				<UserTag author={authorname} photo={authorphoto!} />
 				<div className={style.likesContainer} onClick={() => manageLike(id!)}>
 					{liked ? <MdFavorite /> : <MdOutlineFavoriteBorder />}
 				</div>

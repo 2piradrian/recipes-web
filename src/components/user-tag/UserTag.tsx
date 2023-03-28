@@ -1,20 +1,22 @@
 import nouser from "../../assets/nouser.jpg";
+import { photoList } from "../../data/data";
 import style from "./style.module.css";
 
 type Props = {
 	author: string;
+	photo: string;
 };
 
-function UserTag({ author }: Props) {
+function UserTag({ author, photo }: Props) {
 	return (
 		<div className={style.container}>
 			<img
-				src={`../../assets/profile/${1}.jpg`}
+				src={photoList[parseInt(photo)] || nouser}
 				onError={({ currentTarget }) => {
 					currentTarget.onerror = null;
 					currentTarget.src = nouser;
 				}}
-				alt="profile photo"
+				alt="profile"
 				className={style.photo}
 			/>
 			<p className={style.author}>{author}</p>
