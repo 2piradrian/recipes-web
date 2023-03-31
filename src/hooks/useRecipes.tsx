@@ -75,6 +75,9 @@ function useRecipes() {
 
 	/* manejador de likes */
 	const manageLike = async (id: string) => {
+		if (!userData.favourites) {
+			return toast.error("Esta acción es solo para usuarios registrados");
+		}
 		let updatedLikes;
 		const likes = userData.favourites;
 
