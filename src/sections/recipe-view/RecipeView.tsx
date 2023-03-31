@@ -1,4 +1,4 @@
-import { recipe } from "../../types/types";
+import { ingredient, recipe } from "../../types/types";
 import { useSelector } from "react-redux";
 import { AiFillEdit } from "react-icons/ai";
 import ActionButton from "../../components/action-button/ActionButton";
@@ -10,6 +10,13 @@ type Props = {
 
 function RecipeView({ recipe }: Props) {
 	const userData = useSelector((state: any) => state.userData);
+
+	const setFormat = (ingredient: ingredient) => {
+		if (ingredient.unit === "a gusto") {
+			return `${ingredient.name} ${ingredient.unit}`;
+		}
+		return `${ingredient.cant} ${ingredient.unit} de ${ingredient.name}`;
+	};
 
 	return (
 		<div className={style.container}>
@@ -24,12 +31,11 @@ function RecipeView({ recipe }: Props) {
 				<ul>
 					{recipe.ingredients.map((ingredient, index) => (
 						<li className={style.ingredient} key={index}>
-							{ingredient.cant} {`${ingredient.unit} de ${ingredient.name}`}
+							{setFormat(ingredient)}
 						</li>
 					))}
 				</ul>
 				<h2>Paso a paso</h2>
-				{/*TODO: Cambiar el p por una lista numerada*/}
 				<ol>
 					{recipe.steps.map((step, index) => (
 						<li className={style.steps} key={index}>
@@ -37,7 +43,6 @@ function RecipeView({ recipe }: Props) {
 						</li>
 					))}
 				</ol>
-
 				{userData.uid === recipe.authoruid ? (
 					<ActionButton content={<AiFillEdit />} route={`/editor/${recipe.id}`} />
 				) : null}
