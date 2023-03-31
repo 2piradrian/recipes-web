@@ -34,7 +34,7 @@ function PhotoSelector({ setSelectedPhoto, selectedPhoto }: Props) {
 							border:
 								selectedPhoto === index + 1 ? "3px solid var(--contrast)" : "none",
 						}}
-						onClick={() => handleSelect(index + 1)}
+						onClick={() => handleSelect(index)}
 					/>
 				))}
 			</div>

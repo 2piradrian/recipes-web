@@ -1,9 +1,10 @@
 .container {
+	min-height: 90vh;
 	width: 100%;
 	padding: 30px 20px;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: center;
 	align-items: center;
 }
 

@@ -14,13 +14,15 @@ import {
 } from "firebase/firestore";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function useRecipes() {
 	const dispatch = useDispatch();
 	const recipesCollection = collection(db, "recipes");
 
 	const userData = useSelector((state: any) => state.userData);
+
+	const navigate = useNavigate();
 
 	/* añade la receta a la colección de recetas públicas */
 	const uploadRecipe = async (recipe: recipe) => {
@@ -33,7 +35,15 @@ function useRecipes() {
 			})
 		);
 		toast.success("Receta subida exitosamente");
-		return <Navigate to={`/recipe/${docRef.id}`} replace />;
+		navigate(`/recipe/${docRef.id}`);
+	};
+
+	/* actualizar receta */
+	const updateRecipe = async (recipe: recipe, id: string) => {
+		updateDoc(doc(recipesCollection, id), recipe).then(() =>
+			toast.success("Receta actualizada exitosamente")
+		);
+		navigate(`/recipe/${id}`);
 	};
 
 	/* trae las recetas que se muestran en /home */
@@ -55,14 +65,6 @@ function useRecipes() {
 			...(docSnap.data() as recipe),
 		};
 		return recipe;
-	};
-
-	/* actualizar receta */
-	const updateRecipe = async (recipe: recipe, id: string) => {
-		updateDoc(doc(recipesCollection, id), recipe).then(() =>
-			toast.success("Receta actualizada exitosamente")
-		);
-		return <Navigate to={`/recipe/${id}`} replace />;
 	};
 
 	/* obtener las favoritas o las creadas por el usuario */

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { fullUserData } from "../../types/types";
 import { useSelector } from "react-redux";
 import { update_user_data } from "../../redux/actions/actions";
+import { toast } from "react-hot-toast";
 
 type Props = {
 	preferred: string[];
@@ -22,6 +23,7 @@ function CategoriesSelector({ preferred, setPreferred }: Props) {
 				categories: preferred,
 			})
 		);
+		toast.success("Preferencias actualizadas");
 	};
 
 	return (
