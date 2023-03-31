@@ -15,24 +15,33 @@ function RecipeView({ recipe }: Props) {
 		<div className={style.container}>
 			<h1 className={style.name}>{recipe?.name}</h1>
 			<img src={recipe.image} alt={recipe.name} className={style.image} />
-			<h2>Tiempo estimado</h2>
-			<p className={style.time}>{recipe.time}</p>
-			<h2>Descripción</h2>
-			<p className={style.description}>{recipe.description}</p>
-			<h2>Ingredientes</h2>
-			{recipe.ingredients.map((ingredient) => (
-				<p className={style.ingredient}>
-					{ingredient.cant} {`${ingredient.unit} de ${ingredient.name}`}
-				</p>
-			))}
-			<h2>Paso a paso</h2>
-			{/*TODO: Cambiar el p por una lista numerada*/}
-			{recipe.steps.map((step, index) => (
-				<p className={style.steps}>{`${index + 1}) ${step}`}</p>
-			))}
-			{userData.uid === recipe.authoruid ? (
-				<ActionButton content={<AiFillEdit />} route={`/editor/${recipe.id}`} />
-			) : null}
+			<div className={style.textContainer}>
+				<h2>Tiempo estimado</h2>
+				<p className={style.time}>{recipe.time}</p>
+				<h2>Descripción</h2>
+				<p className={style.description}>{recipe.description}</p>
+				<h2>Ingredientes</h2>
+				<ul>
+					{recipe.ingredients.map((ingredient, index) => (
+						<li className={style.ingredient} key={index}>
+							{ingredient.cant} {`${ingredient.unit} de ${ingredient.name}`}
+						</li>
+					))}
+				</ul>
+				<h2>Paso a paso</h2>
+				{/*TODO: Cambiar el p por una lista numerada*/}
+				<ol>
+					{recipe.steps.map((step, index) => (
+						<li className={style.steps} key={index}>
+							{step}
+						</li>
+					))}
+				</ol>
+
+				{userData.uid === recipe.authoruid ? (
+					<ActionButton content={<AiFillEdit />} route={`/editor/${recipe.id}`} />
+				) : null}
+			</div>
 		</div>
 	);
 }

@@ -64,7 +64,7 @@ function useRecipes() {
 
 	/* obtener las favoritas o las creadas por el usuario */
 	const getListOfRecipes = async (type: boolean = false) => {
-		const list = type ? userData.recipes : userData.favourites;
+		const list = (type ? userData.recipes : userData.favourites) || [];
 		const promises = list.map((id: string) => getRecipeById(id));
 		const recipes = await Promise.all(promises);
 		return recipes;
