@@ -1,7 +1,7 @@
-import { update_user_data } from "./../redux/actions/actions";
+import { update_user_data } from "../redux/actions/actions";
 import { toast } from "react-hot-toast";
-import { recipe } from "./../types/types";
-import { db } from "./../firebase";
+import { recipe } from "../types/types";
+import { db } from "../firebase";
 import {
 	addDoc,
 	collection,
@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 function useRecipes() {
 	const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function useRecipes() {
 			})
 		);
 		toast.success("Receta subida exitosamente");
+		return <Navigate to={`/recipe/${docRef.id}`} replace />;
 	};
 
 	/* trae las recetas que se muestran en /home */
@@ -60,6 +62,7 @@ function useRecipes() {
 		updateDoc(doc(recipesCollection, id), recipe).then(() =>
 			toast.success("Receta actualizada exitosamente")
 		);
+		return <Navigate to={`/recipe/${id}`} replace />;
 	};
 
 	/* obtener las favoritas o las creadas por el usuario */
