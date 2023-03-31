@@ -11,8 +11,10 @@ export const userdataReducer = (state: fullUserData | {} = {}, action: action) =
 			setDoc(doc(collection(db, "users"), payload.email), payload);
 			return { ...payload };
 		case UPDATE_USER_DATA:
+			/* actualiza en el state el documento del usuario y además, lo sube a firerbase */
 			updateDoc(doc(collection(db, "users"), payload.email), payload);
-			return { ...state };
+			/* return { ...state }; */
+			return { ...state, ...payload };
 		case SET_LOCAL_DATA:
 			/* establece en el state el documento de información del usuario */
 			return { ...payload };

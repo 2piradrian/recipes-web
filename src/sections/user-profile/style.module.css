@@ -1,6 +1,6 @@
 .container {
 	width: 100%;
-	padding: 50px 20px;
+	padding: 30px 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -8,10 +8,14 @@
 }
 
 .photo {
-	height: 250px;
+	height: 200px;
 }
 
 .name {
 	margin: 20px 0px;
 	font-size: 28px;
+}
+
+.categories {
+	font-size: 18px;
 }

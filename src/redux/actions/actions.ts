@@ -18,7 +18,7 @@ export const set_user_data = (data: fullUserData) => ({
 	payload: data,
 });
 
-export const update_user_data = (data: { email: string; recipes: string[] }) => ({
+export const update_user_data = (data: fullUserData) => ({
 	type: SET_USER_DATA,
 	payload: data,
 });
