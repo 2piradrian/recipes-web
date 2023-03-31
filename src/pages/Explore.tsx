@@ -24,6 +24,7 @@ function Explore() {
 					justifyContent: "center",
 					gap: "20px",
 					padding: "50px",
+					maxWidth: "1500px",
 				}}>
 				{recipes.map((recipe) => (
 					<RecipeCard key={recipe.id} {...recipe} />
