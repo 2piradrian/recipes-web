@@ -1,17 +1,17 @@
 import { photoList } from "../../data/data";
+import { fullUserData } from "../../types/types";
 import nouser from "../../assets/nouser.jpg";
 import style from "./style.module.css";
 
 type Props = {
-	author: string;
-	photo: string;
+	user: fullUserData;
 };
 
-function UserTag({ author, photo }: Props) {
+function UserProfile({ user }: Props) {
 	return (
 		<div className={style.container}>
 			<img
-				src={photoList[parseInt(photo)] || nouser}
+				src={photoList[user.image] || nouser}
 				onError={({ currentTarget }) => {
 					currentTarget.onerror = null;
 					currentTarget.src = nouser;
@@ -19,9 +19,11 @@ function UserTag({ author, photo }: Props) {
 				alt="profile"
 				className={style.photo}
 			/>
-			<p className={style.author}>{author}</p>
+			<h1 className={style.name}>
+				{user.name} {user.surname}
+			</h1>
 		</div>
 	);
 }
 
-export default UserTag;
+export default UserProfile;

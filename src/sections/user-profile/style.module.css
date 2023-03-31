@@ -1,0 +1,17 @@
+.container {
+	width: 100%;
+	padding: 50px 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.photo {
+	height: 250px;
+}
+
+.name {
+	margin: 20px 0px;
+	font-size: 28px;
+}
