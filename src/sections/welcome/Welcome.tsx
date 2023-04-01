@@ -10,10 +10,8 @@ function Welcome({ recipes }: Props) {
 		<div className="bigcontainer">
 			<Titles title="Novedades" subtitle="recetas de la comunidad" />
 			<SliderContainer recipes={recipes.last3} />
-			<Titles title="Para ti" subtitle="basado en tus favoritos" />
+			<Titles title="Para ti" subtitle="basado en tus categorias favoritas" />
 			<SliderContainer recipes={recipes.recommended} />
-			<Titles title="Siguiendo" subtitle="basado en las personas que sigues" />
-			<SliderContainer recipes={recipes.following} />
 		</div>
 	);
 }

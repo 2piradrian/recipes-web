@@ -11,6 +11,7 @@ import {
 	limit,
 	query,
 	updateDoc,
+	where,
 } from "firebase/firestore";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -48,12 +49,27 @@ function useRecipes() {
 
 	/* trae las recetas que se muestran en /home */
 	const getPrincipalRecipes = async () => {
+		const categories = userData?.categories;
+		console.log(categories);
 		const last3 = await getDocs(query(recipesCollection, limit(3))).then((snapshot) =>
 			snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
 		);
-		/* TODO: traer las otras dos secciones */
+		const recommended = await getDocs(
+			query(
+				recipesCollection,
+				limit(3),
+				where(
+					"category",
+					"==",
+					categories !== undefined && categories.length > 0
+						? categories[Math.floor(Math.random() * categories.length)]
+						: null
+				)
+			)
+		).then((snapshot) => snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
 		return {
 			last3,
+			recommended,
 		};
 	};
 
