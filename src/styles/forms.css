@@ -1,6 +1,7 @@
 .form {
 	height: auto;
-	width: 340px;
+	width: 95%;
+	max-width: 450px;
 	margin: 20px 0px;
 	display: flex;
 	flex-direction: column;
