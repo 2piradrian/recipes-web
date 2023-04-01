@@ -3,6 +3,9 @@ import { fullUserData } from "../../types/types";
 import CategoriesSelector from "../../components/categories-selector/CategoriesSelector";
 import nouser from "../../assets/nouser.jpg";
 import style from "./style.module.css";
+import ActionButton from "../../components/action-button/ActionButton";
+import { IoMdExit } from "react-icons/io";
+import { auth } from "../../firebase";
 
 type Props = {
 	user: fullUserData;
@@ -27,6 +30,12 @@ function UserProfile({ user, setPreferred, preferred }: Props) {
 			</h1>
 			<h2 className={style.categories}>Tus preferidos:</h2>
 			<CategoriesSelector setPreferred={setPreferred} preferred={preferred} />
+			<ActionButton
+				content={<IoMdExit />}
+				action={() => {
+					auth.signOut();
+				}}
+			/>
 		</div>
 	);
 }

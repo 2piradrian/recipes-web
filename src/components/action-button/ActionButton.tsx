@@ -3,17 +3,22 @@ import { useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 
 type Props = {
-	route: string;
+	route?: string;
+	action?: () => void;
 	content: ReactNode;
 };
 
-function ActionButton({ route, content }: Props) {
+function ActionButton({ route, content, action }: Props) {
 	const navigate = useNavigate();
 	return (
 		<div
 			className={style.container}
 			onClick={() => {
-				navigate(route);
+				if (action) {
+					action();
+				} else {
+					navigate(route!);
+				}
 			}}>
 			{content}
 		</div>
