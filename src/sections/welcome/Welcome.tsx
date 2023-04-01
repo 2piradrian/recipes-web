@@ -2,7 +2,6 @@ import SliderContainer from "../../components/slider-container/SliderContainer";
 import Titles from "../../components/titles/Titles";
 
 type Props = {
-	/* TODO: Arreglar este tipo any */
 	recipes: any;
 };
 

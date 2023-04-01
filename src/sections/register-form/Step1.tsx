@@ -2,6 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import useVerification from "../../hooks/useVerification";
+import style from "./style.module.css";
 import "../../styles/forms.css";
 
 type Props = {
@@ -18,7 +19,7 @@ function Step1({ handleStep, dataStep }: Props) {
 	};
 
 	return (
-		<>
+		<div className={style.container}>
 			<Formik
 				initialValues={{ email: "", password: "", repeatpass: "" }}
 				validationSchema={RegisterSchema}
@@ -63,7 +64,7 @@ function Step1({ handleStep, dataStep }: Props) {
 				Ya tengo una cuenta 👨‍🍳
 			</Link>
 			<Toaster />
-		</>
+		</div>
 	);
 }
 

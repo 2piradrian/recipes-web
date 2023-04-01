@@ -60,7 +60,7 @@ function Register() {
 	return (
 		<section className="bigcontainer">
 			<Titles title="Sumate al equipo" subtitle="registrate acá 👇" />
-			<div>
+			<div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
 				{formStep === 1 ? (
 					<Step1 handleStep={handleStep} dataStep={setDataStep1} />
 				) : (

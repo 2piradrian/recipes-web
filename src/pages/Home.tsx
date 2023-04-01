@@ -12,7 +12,6 @@ function Home() {
 
 	useEffect(() => {
 		const fetchRecipes = async () => {
-			/* TODO: Arreglar este tipo any */
 			const recipes: any = await getPrincipalRecipes();
 			setRecipes(recipes);
 		};
