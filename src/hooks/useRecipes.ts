@@ -50,7 +50,6 @@ function useRecipes() {
 	/* trae las recetas que se muestran en /home */
 	const getPrincipalRecipes = async () => {
 		const categories = userData?.categories;
-		console.log(categories);
 		const last3 = await getDocs(query(recipesCollection, limit(3))).then((snapshot) =>
 			snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
 		);
