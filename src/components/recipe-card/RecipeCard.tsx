@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { MdFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import useRecipes from "../../hooks/useRecipes";
 import { fullUserData, recipe } from "../../types/types";
+import useRecipes from "../../hooks/useRecipes";
 import UserTag from "../user-tag/UserTag";
 import style from "./style.module.css";
 

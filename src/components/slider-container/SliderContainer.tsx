@@ -1,7 +1,7 @@
-import style from "./style.module.css";
 import { recipe } from "../../types/types";
-import RecipeCard from "../recipe-card/RecipeCard";
 import { useNavigate } from "react-router-dom";
+import RecipeCard from "../recipe-card/RecipeCard";
+import style from "./style.module.css";
 
 type Props = {
 	recipes: Array<recipe>;

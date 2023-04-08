@@ -1,13 +1,12 @@
-import style from "./style.module.css";
 import { categories } from "../../data/data";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { filter_category, no_filters } from "../../redux/actions/actions";
 import Titles from "../titles/Titles";
+import style from "./style.module.css";
 
 function SearchBar() {
 	const [filter, setFilter] = useState<string | null>();
-
 	const dispatch = useDispatch();
 
 	useEffect(() => {

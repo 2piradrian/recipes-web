@@ -1,9 +1,8 @@
 import { useState } from "react";
-import style from "./style.module.css";
 import NavRoutes from "../nav-routes/NavRoutes";
-/* assets */
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineClose } from "react-icons/ai";
+import style from "./style.module.css";
 
 function Sidebar() {
 	const [state, setState] = useState<boolean>(false);
