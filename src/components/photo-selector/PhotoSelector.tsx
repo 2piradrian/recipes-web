@@ -1,3 +1,4 @@
+import { photoList } from "../../data/data";
 import style from "./style.module.css";
 
 type Props = {
@@ -6,17 +7,6 @@ type Props = {
 };
 
 function PhotoSelector({ setSelectedPhoto, selectedPhoto }: Props) {
-	const images = [
-		require("../../assets/profile/1.png"),
-		require("../../assets/profile/2.png"),
-		require("../../assets/profile/3.png"),
-		require("../../assets/profile/4.png"),
-		require("../../assets/profile/5.png"),
-		require("../../assets/profile/6.png"),
-		require("../../assets/profile/7.png"),
-		require("../../assets/profile/8.png"),
-	];
-
 	const handleSelect = (index: number) => {
 		setSelectedPhoto(index);
 	};
@@ -25,7 +15,7 @@ function PhotoSelector({ setSelectedPhoto, selectedPhoto }: Props) {
 		<div className={style.container}>
 			<label>Selecciona tu foto de perfil:</label>
 			<div className={style.photoContainer}>
-				{images.map((image, index) => (
+				{photoList.map((image, index) => (
 					<img
 						key={index}
 						src={image}

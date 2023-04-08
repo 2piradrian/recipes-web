@@ -1,13 +1,12 @@
 import NavItem from "../nav-item/NavItem";
-import style from "./style.module.css";
-/* asstes */
 import { AiFillHome } from "react-icons/ai";
 import { MdFavorite } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
-import nouser from "../../assets/nouser.jpg";
 import { useSelector } from "react-redux";
 import { photoList } from "../../data/data";
+import nouser from "../../assets/nouser.jpg";
+import style from "./style.module.css";
 
 type Props = {
 	state: boolean;

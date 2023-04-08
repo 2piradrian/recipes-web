@@ -1,4 +1,3 @@
-import React from "react";
 import { ColorRing } from "react-loader-spinner";
 
 function Loader() {
@@ -8,7 +7,6 @@ function Loader() {
 			height="80"
 			width="80"
 			ariaLabel="recipe-loading"
-			wrapperStyle={{}}
 			wrapperClass="blocks-wrapper"
 			colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
 		/>

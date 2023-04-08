@@ -14,11 +14,7 @@ function ActionButton({ route, content, action }: Props) {
 		<div
 			className={style.container}
 			onClick={() => {
-				if (action) {
-					action();
-				} else {
-					navigate(route!);
-				}
+				action ? action() : navigate(route!);
 			}}>
 			{content}
 		</div>

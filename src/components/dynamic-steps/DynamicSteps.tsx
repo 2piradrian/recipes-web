@@ -1,6 +1,5 @@
 import { useState } from "react";
 import StepsInput from "../steps-input/StepsInput";
-
 import style from "./style.module.css";
 
 type Props = {

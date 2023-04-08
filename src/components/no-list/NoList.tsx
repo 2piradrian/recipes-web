@@ -1,5 +1,5 @@
-import style from "./style.module.css";
 import sad from "../../assets/sad.gif";
+import style from "./style.module.css";
 
 type Props = {
 	text: string;

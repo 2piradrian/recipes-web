@@ -1,6 +1,5 @@
 import { useState } from "react";
 import IngredientsInput from "../ingredients-input/IngredientsInput";
-
 import style from "./style.module.css";
 
 type Props = {
