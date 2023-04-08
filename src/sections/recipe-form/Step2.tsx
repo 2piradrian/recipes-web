@@ -1,14 +1,13 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import StepTitle from "../../components/step-title/StepTitle";
 import useVerification from "../../hooks/useVerification";
-
 import "../../styles/forms.css";
 
 type Props = {
 	handleStep: (number: number) => void;
 	dataStep: (data: any) => void;
-	data: any;
 	style: Object;
+	data: any;
 };
 
 function Step2({ handleStep, dataStep, data, style }: Props) {

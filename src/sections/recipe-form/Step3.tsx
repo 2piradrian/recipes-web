@@ -1,8 +1,8 @@
-import DynamicIngredients from "../../components/dynamic-ingredients/DynamicIngredients";
 import { toast } from "react-hot-toast";
 import { ingredient } from "../../types/types";
-import "../../styles/forms.css";
 import StepTitle from "../../components/step-title/StepTitle";
+import DynamicIngredients from "../../components/dynamic-ingredients/DynamicIngredients";
+import "../../styles/forms.css";
 
 type Props = {
 	handleStep: (number: number) => void;

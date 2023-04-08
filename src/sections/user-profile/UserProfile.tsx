@@ -1,11 +1,11 @@
 import { photoList } from "../../data/data";
 import { fullUserData } from "../../types/types";
-import CategoriesSelector from "../../components/categories-selector/CategoriesSelector";
-import nouser from "../../assets/nouser.jpg";
-import style from "./style.module.css";
-import ActionButton from "../../components/action-button/ActionButton";
 import { IoMdExit } from "react-icons/io";
 import { auth } from "../../firebase";
+import CategoriesSelector from "../../components/categories-selector/CategoriesSelector";
+import nouser from "../../assets/nouser.jpg";
+import ActionButton from "../../components/action-button/ActionButton";
+import style from "./style.module.css";
 
 type Props = {
 	user: fullUserData;

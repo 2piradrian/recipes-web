@@ -2,8 +2,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
 import Titles from "../../components/titles/Titles";
 import useAccount from "../../hooks/useAccount";
-import "../../styles/forms.css";
 import useVerification from "../../hooks/useVerification";
+import "../../styles/forms.css";
 
 function LoginForm() {
 	const { logInWithEmail } = useAccount();

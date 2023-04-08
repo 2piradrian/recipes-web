@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
+import { recipe } from "../../types/types";
 import Loader from "../../components/loader/Loader";
 import NoList from "../../components/no-list/NoList";
 import RecipeCard from "../../components/recipe-card/RecipeCard";
 import useRecipes from "../../hooks/useRecipes";
-import { recipe } from "../../types/types";
 import style from "./style.module.css";
 
 function FavouritesView() {

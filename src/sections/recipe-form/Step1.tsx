@@ -3,14 +3,13 @@ import FormSelector from "../../components/form-selector/FormSelector";
 import StepTitle from "../../components/step-title/StepTitle";
 import { categories, time } from "../../data/data";
 import useVerification from "../../hooks/useVerification";
-
 import "../../styles/forms.css";
 
 type Props = {
 	handleStep: (number: number) => void;
 	dataStep: (data: any) => void;
-	data: any;
 	style: Object;
+	data: any;
 };
 
 function Step1({ handleStep, dataStep, data, style }: Props) {
@@ -53,7 +52,6 @@ function Step1({ handleStep, dataStep, data, style }: Props) {
 							<ErrorMessage name="unit" component="small" />
 						</div>
 					</div>
-
 					<div className="columnInputs">
 						<button type="submit">Siguiente</button>
 					</div>

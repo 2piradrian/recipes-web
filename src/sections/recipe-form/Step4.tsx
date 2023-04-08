@@ -1,4 +1,3 @@
-import React from "react";
 import { toast, Toaster } from "react-hot-toast";
 import DynamicSteps from "../../components/dynamic-steps/DynamicSteps";
 import StepTitle from "../../components/step-title/StepTitle";
