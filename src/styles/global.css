@@ -69,3 +69,14 @@ a {
 	position: relative;
 	overflow: hidden;
 }
+
+.wrapcontainer {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+	padding: 50px;
+	max-width: 1500px;
+}

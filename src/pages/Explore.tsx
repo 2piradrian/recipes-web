@@ -15,17 +15,7 @@ function Explore() {
 	return (
 		<div className="bigcontainer">
 			<SearchBar />
-			<div
-				style={{
-					height: "100%",
-					width: "100%",
-					display: "flex",
-					flexWrap: "wrap",
-					justifyContent: "center",
-					gap: "20px",
-					padding: "50px",
-					maxWidth: "1500px",
-				}}>
+			<div className="wrapcontainer">
 				{recipes.map((recipe) => (
 					<RecipeCard key={recipe.id} {...recipe} />
 				))}
